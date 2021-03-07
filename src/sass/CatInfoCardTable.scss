@@ -1,0 +1,85 @@
+@use 'variables';
+
+.grade {
+  display: flex;
+  flex-direction: row;
+  
+  &__element {
+    height: 12px;
+    width: 60px;
+    border-radius: 8px;
+    background-color: variables.$bright-5;
+    margin: 4px;
+  }
+}
+
+@for $i from 1 through 1 {
+  .grade--1 .grade__element:nth-child(#{$i}) {
+    background-color: variables.$brown-2;
+  }
+}
+
+@for $i from 1 through 2 {
+  .grade--2 .grade__element:nth-child(#{$i}) {
+    background-color: variables.$brown-2;
+  }
+}
+
+@for $i from 1 through 3 {
+  .grade--3 .grade__element:nth-child(#{$i}) {
+    background-color: variables.$brown-2;
+  }
+}
+
+@for $i from 1 through 4 {
+  .grade--4 .grade__element:nth-child(#{$i}) {
+    background-color: variables.$brown-2;
+  }
+}
+
+@for $i from 1 through 5 {
+  .grade--5 .grade__element:nth-child(#{$i}) {
+    background-color: variables.$brown-2;
+  }
+}
+
+.cat-info-card__info-table {
+  text-transform: capitalize;
+  &-property {
+    font-family: variables.$font-1;
+    font-size: 16px;
+    color: variables.$dark-1;
+    font-weight: 700;
+    min-width: 150px;
+  }
+
+  &-value {
+    font-family: variables.$font-1;
+    font-size: 16px;
+    color: variables.$dark-1;
+    font-weight: 500;
+  }
+}
+
+tr {
+  height: 37px;
+}
+
+@media only screen and (max-width: 550px) {
+  .cat-info-card__info-table {
+    padding: 0px;
+
+    &-property {
+      font-size: 12px;
+    }
+  
+    &-value {
+      font-size: 12px;
+    }
+  }
+
+  .grade__element {
+    height: 6px;
+    width: 28px;
+  }
+}

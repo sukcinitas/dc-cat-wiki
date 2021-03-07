@@ -1,0 +1,14 @@
+@use 'variables';
+
+.paragraph {
+  font-family: variables.$font-1;
+  font-size: 18px;
+  color: variables.$brown-1;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 550px) {
+  .paragraph {
+    font-size: 12px;
+  }
+}

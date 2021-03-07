@@ -1,0 +1,26 @@
+@use 'variables';
+
+.btn {
+  color: variables.$bright-4-transparent;
+  font-family: variables.$font-1;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__icon {
+    position: relative;
+    top: 5px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .btn {
+    font-size: 12px;
+  }
+}

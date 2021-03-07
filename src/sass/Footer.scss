@@ -1,0 +1,108 @@
+@use 'variables';
+
+.footer {
+  // position: fixed;
+  // bottom: 0;
+  // left: 6%;
+  // right: 6%;
+  flex-basis: 120px;
+  background-color: variables.$dark-1;
+  border-top-left-radius: 42px;
+  border-top-right-radius: 42px;
+  padding: 30px 32px;
+  display: flex;
+  justify-content: space-between;
+
+  &__logo {
+    height: 43px;
+    color: variables.$bright-1;
+    padding: 0px 70px;
+    align-self: center;
+  }
+
+  &__content {
+    color: variables.$bright-1;
+    font-size: 18px;
+    font-family: variables.$font-1;
+    align-self: center;
+    font-weight: 400;
+  }
+
+  &__link {
+    color: variables.$bright-1;
+    font-size: 18px;
+    font-family: variables.$font-1;
+
+    &--not-underlined {
+      text-decoration: none;
+    }
+  }
+
+  &__icon {
+    font-size: 24px;
+    position: relative;
+    top: 4px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .footer {
+    left: 6%;
+    right: 6%;
+  }
+}
+
+@media only screen and (max-width: 970px) and (min-width: 550px) {
+
+  .footer {
+    flex-direction: column;
+    left: 30px;
+    right: 30px;
+    padding: 30px 42px 24px;
+    padding-right: 10px;
+
+    &__logo {
+      height: 35px;
+      padding: 0px;
+      margin-bottom: 10px;
+      align-self: flex-start;
+    }
+
+    &__content {
+      font-size: 16px;
+      align-self: flex-start;
+    }
+
+    &__link {
+      font-size: 16px;
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+
+  .footer {
+    flex-direction: column;
+    left: 18px;
+    right: 18px;
+    padding: 30px 32px 24px;
+    padding-right: 4px;
+
+    &__logo {
+      height: 26px;
+      padding: 0px;
+      margin-bottom: 10px;
+      align-self: flex-start;
+    }
+
+    &__content {
+      font-size: 12px;
+      padding: 0px;
+      align-self: flex-start;
+    }
+
+    &__link {
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.photos {
+  margin: 80px 0px 160px;
+
+  &__grid {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    row-gap: 52px;
+    justify-content: space-evenly;
+  }
+
+  &__photo {
+    height: 278px;
+    width: 278px;
+    border-radius: 24px;
+    background-color: black;
+    object-fit: cover;
+  }
+}
+

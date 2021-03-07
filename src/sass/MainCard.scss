@@ -1,0 +1,127 @@
+@use 'variables';
+
+.main-card {
+  border-radius: 42px;
+  background-color: variables.$bright-2;
+
+  &__top-section {
+    padding: 114px 108px 100px;
+    background: url('../assets/HeroImagelg.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    border-top-left-radius: 42px;
+    border-top-right-radius: 42px;
+  }
+
+  &__logo {
+    height: 87px;
+  }
+
+  &__text {
+    color: variables.$bright-1;
+    font-family: variables.$font-1;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  &__bottom-section {
+    padding: 46px 108px 100px;
+  }
+
+  &__additional {
+    font-size: 18px;
+    color: variables.$brown-1;
+    font-weight: 500;
+    position: relative;
+    font-family: variables.$font-1;
+
+    &::after {
+      content: '';
+      background-color: variables.$brown-3;
+      width: 60px;
+      height: 3px;
+      position: absolute;
+      bottom: -8px;
+      display: block;
+    }
+  }
+
+  &__wrapper {
+    margin: 46px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__cat-row {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    &-image {
+      height: 220px;
+      width: 220px;
+      background-color: black;
+      border-radius: 24px;
+      position: relative;
+
+      &-detail {
+        content: '';
+        background-color: variables.$yellow-1;
+        width: 46px;
+        height: 174px;
+        display: block;
+        z-index: -1;
+        position: absolute;
+      }
+    }
+
+    &-text {
+      color: variables.$brown-3;
+      font-size: 18px;
+      font-family: variables.$font-1;
+      font-weight: 600;
+      margin: 20px 0px;
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+
+  .main-card {
+    &__top-section {
+      padding: 20px 30px 20px;
+    }
+
+    &__logo {
+      height: 19px;
+    }
+
+    &__text {
+      font-size: 10px;
+    }
+
+    &__bottom-section {
+      padding: 20px 24px 40px;
+    }
+
+    &__additional {
+      font-size: 12px;
+  
+      &::after {
+        width: 40px;
+      }
+    }
+
+    &__cat-row-image {
+      width: 134px;
+      height: 134px;
+    }
+
+    &__cat-row-text {
+      font-size: 12px;
+      margin: 12px;
+    }
+  }
+}

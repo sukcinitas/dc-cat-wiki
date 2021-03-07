@@ -1,0 +1,13 @@
+@use 'variables';
+
+.header {
+  flex-shrink: 0;
+  height: 100px;
+  flex-basis: 100px;
+  display: flex;
+
+  &__logo {
+    height: 43px;
+    align-self: center;
+  }
+}

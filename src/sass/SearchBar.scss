@@ -1,0 +1,143 @@
+@use 'variables';
+
+.search {
+  position: relative;
+  display: inline-block;
+
+  &__bar {
+    margin: 50px 0px;
+    font-family: variables.$font-1;
+    width: 394px;
+    border-radius: 59px;
+    color: variables.$brown-1;
+    position: relative;
+  }
+
+  &__bar-input {
+    font-family: variables.$font-1;
+    font-size: 18px;
+    font-weight: 500;
+    width: 100%;
+    border-radius: 59px;
+    color: variables.$brown-1;
+    border: 1px solid black;
+    padding: 20px 28px;
+  
+    &:focus, &:active {
+      outline: none;
+    }
+  }
+
+  &__icon {
+    color: variables.$brown-1;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    &:hover, &:focus {
+      cursor: pointer;
+      color: variables.$dark-1;
+    }
+  }
+
+  &__bar--modal, &__icon--modal, &__icon--close, &__btn {
+    display: none;
+  }
+
+  &__panel {
+    width: 394px;
+    max-height: 220px;
+    border-radius: 24px;
+    position: absolute;
+    top: 120px;
+    background-color: variables.$bright-1;
+    z-index: 9;
+    padding-right: 12px;
+  }
+
+  &__list {
+    max-height: 200px;
+    display: block;
+    overflow-y: auto;
+    margin: 10px;
+  }
+
+  &__item {
+    font-family: variables.$font-1;
+    font-size: 18px;
+    font-weight: 500;  
+    display: inline-block;
+    width: 100%;
+    padding: 17px 11px;
+    border-radius: 12px;
+
+    &:hover {
+      background-color: rgba(151, 151, 151, 0.1);
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+
+  .search {
+    // position: inherit; 
+    // margin: 20px;
+
+    &__bar {
+      width: 200px;
+      height: 45px;
+    }
+
+    &__bar-input {
+      // position: relative;
+      width: 100%;
+      font-size: 12px;
+      padding: 10px;
+      // padding: 20px 0;
+    }
+
+    &__icon {
+      top: 8px;
+      right: 8px;
+      font-size: 16px;
+    }
+
+    // &__list {
+    //   overflow-y: initial;
+    // }
+
+    // &__bar--modal, &__icon--modal {
+    //   display: inherit;
+    // }
+
+    // &__icon--modal {
+    //   position: absolute;
+    //   top: 90px;
+    //   right: 40px;
+    // }
+
+    &__panel {
+      height: auto;
+      width: auto;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      padding: 20px;
+    }
+
+    // &__btn {
+    //   height: 40px;
+    //   width: 40px;
+    //   border: none;
+    //   background-color: rgba(151, 151, 151, 0.1);
+    //   border-radius: 8px;
+    //   float: right;
+    //   margin-bottom: 30px;
+    // }
+  }
+}
