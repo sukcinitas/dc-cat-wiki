@@ -62,7 +62,7 @@ const SearchBar = () => {
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.charCode === 40 && list.length !== 0) {
+    if (e.keyCode === 40 && list.length !== 0) {
       console.log('Hey')
     }
   }
@@ -79,15 +79,11 @@ const SearchBar = () => {
   return (
     <div className="search">
       <form className="search__bar" onSubmit={handleSubmit}>
-        <input placeholder="Enter your breed" className="search__bar-input" onChange={handleChange} value={searchQuery}  type="text" onKeyDown={handleKeyDown}/>
+        <input placeholder="Enter your breed" className="search__bar-input" onChange={handleChange} value={searchQuery}  type="text" onKeyDown={(e) => handleKeyDown(e)}/>
         <button type="submit" className="search__icon"><span className="material-icons">search</span></button>
       </form>
       <div className="search__panel">
         <button className="search__btn"><span className="material-icons search__icon--close">close</span></button>
-        {/* <form className="search__bar search-bar--modal" onSubmit={handleSubmit}>
-          <input placeholder="Enter your breed" className="search__bar-input" onChange={handleChange} value={searchQuery}  type="text" onKeyDown={handleKeyDown}/>
-          <button type="submit" className="search__icon"><span className="material-icons">search</span></button>
-         </form> */}
         {list.length > 0 && <ul className="search__list">
           {nameList}
         </ul>}

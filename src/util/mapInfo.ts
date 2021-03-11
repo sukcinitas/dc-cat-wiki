@@ -44,3 +44,14 @@ export const mapCatImageInfo = (data: any): Array<string> => {
   const withoutFirst = data.slice(1);
   return withoutFirst.map((catImageInfo: any) => catImageInfo.url);
 }
+
+export const mapCatImageNameInfo = (data: any): Array<{id: string, name: string, url: string }> => {
+  console.log(data);
+  const first = data.map((cat: any) => ({
+    id: cat.id,
+    name: cat.name,
+    url: cat.image.url, 
+  })).slice(0, 4);
+
+  return first;
+}

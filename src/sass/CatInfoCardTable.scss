@@ -44,7 +44,8 @@
 }
 
 .cat-info-card__info-table {
-  text-transform: capitalize;
+  // text-transform: capitalize;
+  margin-top: 30px;
   &-property {
     font-family: variables.$font-1;
     font-size: 16px;
@@ -65,12 +66,27 @@ tr {
   height: 37px;
 }
 
+
+@media only screen and (max-width: 900px) and (min-width: 550px) {
+  .cat-info-card__info-table {
+    margin: 30px auto 0px;
+  }
+
+  .grade__element {
+    height: 8px;
+    width: 32px;
+    margin: 3px;
+  }
+}
+
 @media only screen and (max-width: 550px) {
   .cat-info-card__info-table {
     padding: 0px;
+    margin: 30px auto 0px;
 
     &-property {
       font-size: 12px;
+      min-width: 30px;
     }
   
     &-value {
@@ -81,5 +97,6 @@ tr {
   .grade__element {
     height: 6px;
     width: 28px;
+    margin: 2px;
   }
 }

@@ -9,5 +9,9 @@
   &__logo {
     height: 43px;
     align-self: center;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

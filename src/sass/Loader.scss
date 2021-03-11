@@ -1,0 +1,56 @@
+@use 'variables';
+
+.loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: variables.$bright-2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+
+  &__dot {
+    color: variables.$brown-1;
+    font-size: 24px;
+    transform: rotate(30deg);
+    padding: 6px;
+    opacity: 0;
+    animation-name: walk;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+
+  &__dot-1 {
+    transform: rotate(20deg);
+    position: relative;
+    top: 20px;
+  }
+
+  &__dot-2 {
+    transform: rotate(30deg);
+    position: relative;
+    animation-delay: 0.25s;
+  }
+
+  &__dot-3 {
+    transform: rotate(40deg);
+    position: relative;
+    top: -60px;
+    animation-delay: 1s;
+  }
+
+  &__dot-4 {
+    transform: rotate(54deg);
+    position: relative;
+    top: -80px;
+    animation-delay: 1.5s;
+  }
+}
+
+@keyframes walk {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}

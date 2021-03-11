@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import CatInfoCard from '../components/CatInfoCard';
 import OtherPhotos from '../components/OtherPhotos';
+import Loader from '../components/Loader';
 import { mapCatInfo, mapCatImageInfo } from '../util/mapInfo';
 import { CatInfo } from '../types';
 
@@ -34,39 +35,17 @@ const HomePage = () => {
     }
   );
   const [catImageInfo, setCatImageInfo] = useState<Array<string>>([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // useEffect(() => {
-  //   const getCatInfo = async (breedId: string): Promise<void> => {
-  //     axios.get(`/api/cats/breeds/${breedId}`).then(
-  //       (res) => {
-  //         console.log(res);
-  //         const { data: { success, catInfo, message } } = res;
-  //         if (success) {
-  //           setCatInfo(mapCatInfo(catInfo));
-  //         } else {
-  //           setError(message);
-  //         }
-  //       },
-  //       (err) => {
-  //         setError(
-  //           err.response.data.message ||
-  //             `${err.response.status}: ${err.response.statusText}`,
-  //         );
-  //       },
-  //     );
-  //   };
-  //   getCatInfo(breedId);
-  // }, [breedId]);
-
   useEffect(() => {
+    setLoading(true);
     const getCatImageInfo = async (breedId: string): Promise<void> => {
       axios.get(`/api/cats/images?breedId=${breedId}&limit=9`).then(
         (res) => {
-          console.log(res);
+          setLoading(false);
           const { data: { success, catInfo, message } } = res;
           if (success) {
-            console.log(catInfo);
             setCatInfo(mapCatInfo(catInfo[0]));
             setCatImageInfo(mapCatImageInfo(catInfo));
           } else {
@@ -74,6 +53,7 @@ const HomePage = () => {
           }
         },
         (err) => {
+          setLoading(false);
           setError(
             err.response.data.message ||
               `${err.response.status}: ${err.response.statusText}`,
@@ -83,6 +63,10 @@ const HomePage = () => {
     };
     getCatImageInfo(breedId);
   }, [breedId]);
+
+  if (loading) {
+    return <Loader />
+  }
 
    return (
      <div className="cat-page">

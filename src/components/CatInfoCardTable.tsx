@@ -33,7 +33,8 @@ type TCatInfoCardTableProps = {
 };
 
 const change = (name: string): string => {
-  return name.split('_').join(' ');
+  const capitalizedArr = (name.split('_')).map((word) => word.charAt(0).toUpperCase() + word.slice(1));
+  return capitalizedArr.join(' ');
 }
 
 const CatInfoCardTable = ({ qualities }: TCatInfoCardTableProps) => {
@@ -41,7 +42,7 @@ const CatInfoCardTable = ({ qualities }: TCatInfoCardTableProps) => {
   const textValues = (Object.entries(textQualities)).map((entry, index) => (
     <tr key={index}>
       <td className="cat-info-card__info-table-property" colSpan={2}>{`${change(entry[0])}: `}
-        <span className="cat-info-card__info-table-value">{entry[1]}</span>
+        <span className="cat-info-card__info-table-value">{entry[0] === 'life_span' ? `${entry[1]} years` : entry[1]}</span>
       </td>
     </tr>
   ));

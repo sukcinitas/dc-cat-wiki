@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 
 import image from '../assets/CatwikiLogoWhite.svg';
 import SearchBar from './SearchBar';
@@ -6,7 +7,16 @@ import Heading from './Heading';
 import Button from './Button';
 import '../sass/MainCard.scss';
 
-const MainCard = () => {
+const MainCard = ({ data }: { data: Array<{id: string, name: string, url: string }>}) => {
+  const history = useHistory();
+
+  const list = data.map((cat: any) => (
+    <div key={cat.id} className="main-card__cat-row-element">
+      <img onClick={() => history.push(`/breeds/${cat.id}`)} src={cat.url} className="main-card__cat-row-image"></img>
+      <p className="main-card__cat-row-text">{cat.name}</p>
+    </div> 
+  ));
+  
   return (
     <div className="main-card">
       <section className="main-card__top-section">
@@ -18,25 +28,10 @@ const MainCard = () => {
         <p className="main-card__additional">Most Searched Breeds</p>
         <div className="main-card__wrapper">
           <Heading>66+ Breeds for you to discover</Heading>
-          <Button>See more</Button>
+          <Button cb={() => history.push('/most-popular-breeds')}>See more</Button>
         </div>
         <div className="main-card__cat-row">
-          <div className="main-card__cat-row-element">
-            <img className="main-card__cat-row-image"></img>
-            <p className="main-card__cat-row-text">Vardas</p>
-          </div>  
-          <div className="main-card__cat-row-element">
-            <img className="main-card__cat-row-image"></img>
-            <p className="main-card__cat-row-text">Vardas</p>
-          </div> 
-          <div className="main-card__cat-row-element">
-            <img className="main-card__cat-row-image"></img>
-            <p className="main-card__cat-row-text">Vardas</p>
-          </div> 
-          <div className="main-card__cat-row-element">
-            <img className="main-card__cat-row-image"></img>
-            <p className="main-card__cat-row-text">Vardas</p>
-          </div> 
+          {list}
         </div>
       </section>
     </div>

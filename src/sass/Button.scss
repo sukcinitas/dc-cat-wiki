@@ -8,6 +8,7 @@
   font-weight: 700;
   border: none;
   background-color: transparent;
+  margin-top: 65px;
 
   &:hover {
     cursor: pointer;
@@ -22,5 +23,6 @@
 @media only screen and (max-width: 550px) {
   .btn {
     font-size: 12px;
+    margin-top: 35px;
   }
 }

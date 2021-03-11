@@ -62,9 +62,14 @@
     &-image {
       height: 220px;
       width: 220px;
-      background-color: black;
+      background-color: variables.$bright-2;
       border-radius: 24px;
       position: relative;
+      object-fit: cover;
+
+      &:hover {
+        cursor: pointer;
+      }
 
       &-detail {
         content: '';
