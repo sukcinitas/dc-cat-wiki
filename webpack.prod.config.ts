@@ -1,6 +1,9 @@
 import path from "path";
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import TerserPlugin from "terser-webpack-plugin";
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
@@ -29,14 +32,38 @@ const config: webpack.Configuration = {
           },
         },
       },
+      {
+        test: /\.(scss|css)$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif|jpeg|ttf)$/,
+          use: [
+          {
+              loader: 'file-loader',
+          }
+          ]
+      },
     ],
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: "src/index.html",
+      template: "template.html",
     }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
@@ -46,6 +73,13 @@ const config: webpack.Configuration = {
     }),
     new CleanWebpackPlugin(),
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin(),
+      new CssMinimizerPlugin(),
+    ],
+  },
 };
 
 export default config;
