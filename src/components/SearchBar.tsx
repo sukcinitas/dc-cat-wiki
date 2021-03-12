@@ -9,6 +9,7 @@ const SearchBar = () => {
   const [selectedBreedId, setSelectedBreedId] = useState('');
   const [list, setList] = useState([]);
   const [error, setError] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const history = useHistory();
   const firstUpdate = useRef(true);
 
@@ -17,6 +18,7 @@ const SearchBar = () => {
       setList([]);
     }
     setSearchQuery(e.currentTarget.value);
+    setError('');
   }
 
   useEffect(() => {
@@ -47,8 +49,8 @@ const SearchBar = () => {
             err.response.data.message ||
               `${err.response.status}: ${err.response.statusText}`,
           );
-        },
-      );
+          setSearchQuery('');
+        });
     };
     searchBreed(searchQuery);
   }, [searchQuery]);
@@ -61,33 +63,58 @@ const SearchBar = () => {
     setSelectedBreedId(breedId);
   }
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.keyCode === 40 && list.length !== 0) {
-      console.log('Hey')
-    }
-  }
-
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     history.push(`/breeds/${selectedBreedId}`);
   }
 
-  const nameList = list.map((cat: { name: string, id: string }): any => (
+  const closeModal = () => {
+    setIsModalVisible(false);
+    setSearchQuery('');
+    setList([]);
+  }
+
+  const nameList = list.map((cat: { name: string, id: string }): React.ReactElement => (
     <li onClick={() => selectBreed(cat.name, cat.id)} onKeyDown={(e) => selectBreed(cat.name, cat.id, e)} key={cat.id} className="search__item">{cat.name}</li>
-  ))
+  ));
 
   return (
     <div className="search">
       <form className="search__bar" onSubmit={handleSubmit}>
-        <input placeholder="Enter your breed" className="search__bar-input" onChange={handleChange} value={searchQuery}  type="text" onKeyDown={(e) => handleKeyDown(e)}/>
+        <input 
+          placeholder={error ? error : 'Enter your breed'}
+          className="search__bar-input"
+          onChange={handleChange} value={searchQuery}
+          type="text"
+          onClick={() => setIsModalVisible(true)}
+        />
         <button type="submit" className="search__icon"><span className="material-icons">search</span></button>
       </form>
+      <button className="search__button" onClick={() => setIsModalVisible(true)}>Search
+        <span className="material-icons search__button-icon">search</span>
+      </button>
       <div className="search__panel">
-        <button className="search__btn"><span className="material-icons search__icon--close">close</span></button>
         {list.length > 0 && <ul className="search__list">
           {nameList}
         </ul>}
       </div>
+      <div className={isModalVisible ? 'modal' : 'modal--hidden'}>
+        <button onClick={closeModal} className="modal__btn"><span className="material-icons search__icon--close modal__icon--close">close</span></button>
+        <form className="modal__bar search__bar" onSubmit={handleSubmit}>
+          <input 
+            placeholder={error ? error : 'Enter your breed'}
+            className="modal__bar-input search__bar-input"
+            onChange={handleChange} value={searchQuery}
+            type="text"
+          />
+          <button type="submit" className="modal__icon search__icon"><span className="material-icons">search</span></button>
+        </form>
+      <div className="modal__panel search__panel">
+        {list.length > 0 && <ul className="modal__list search__list">
+          {nameList}
+        </ul>}
+      </div>
+    </div>
     </div>
   );
 };

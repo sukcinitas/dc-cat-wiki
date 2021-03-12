@@ -4,9 +4,11 @@ import axios from 'axios';
 import Heading from '../components/Heading';
 import CatCard from '../components/CatCard';
 import Loader from '../components/Loader';
+import ErrorMessage from '../components/ErrorMessage';
+import { CatBreedSearchedData } from '../types';
 
 const PopularCatsPage = () => {
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<Array<CatBreedSearchedData>>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -16,8 +18,7 @@ const PopularCatsPage = () => {
       await axios.get('/api/cats/').then(
         (res) => {
           setLoading(false);
-          const sorted = res.data.mostPopularBreeds.sort((a: any, b: any) => b.searched - a.searched);
-          console.log(sorted);
+          const sorted = res.data.mostPopularBreeds.sort((a: CatBreedSearchedData, b: CatBreedSearchedData) => b.searched - a.searched);
           setData(sorted);
         },
         (err) => {
@@ -32,10 +33,14 @@ const PopularCatsPage = () => {
     getCatInfo();
   }, []);
 
-  const list = data.map((cat: any, index: number) => <CatCard key={cat.id} index={index + 1} name={cat.name} description={cat.description} url={cat.image.url } />)
+  const list = data.map((cat: CatBreedSearchedData, index: number) => <CatCard key={cat.id} index={index + 1} name={cat.name} description={cat.description} url={cat.image.url } />)
 
   if (loading) {
     return <Loader />
+  }
+
+  if (error) {
+    return <ErrorMessage>{error}</ErrorMessage>
   }
 
    return (

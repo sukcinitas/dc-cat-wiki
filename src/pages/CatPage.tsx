@@ -5,10 +5,11 @@ import { useParams } from "react-router-dom";
 import CatInfoCard from '../components/CatInfoCard';
 import OtherPhotos from '../components/OtherPhotos';
 import Loader from '../components/Loader';
+import ErrorMessage from '../components/ErrorMessage';
 import { mapCatInfo, mapCatImageInfo } from '../util/mapInfo';
 import { CatInfo } from '../types';
 
-const HomePage = () => {
+const CatPage = () => {
   const { breedId } = useParams<{breedId: string}>();
   const [catInfo, setCatInfo] = useState<CatInfo>(
     {
@@ -43,10 +44,11 @@ const HomePage = () => {
     const getCatImageInfo = async (breedId: string): Promise<void> => {
       axios.get(`/api/cats/images?breedId=${breedId}&limit=9`).then(
         (res) => {
-          setLoading(false);
           const { data: { success, catInfo, message } } = res;
+          setLoading(false);
           if (success) {
-            setCatInfo(mapCatInfo(catInfo[0]));
+            const firstElem = mapCatInfo(catInfo[0]);
+            setCatInfo(firstElem);
             setCatImageInfo(mapCatImageInfo(catInfo));
           } else {
             setError(message);
@@ -68,6 +70,10 @@ const HomePage = () => {
     return <Loader />
   }
 
+  if (error) {
+    return <ErrorMessage>{error}</ErrorMessage>
+  }
+
    return (
      <div className="cat-page">
        <CatInfoCard catInfo={catInfo} />
@@ -76,4 +82,4 @@ const HomePage = () => {
    )
 }
 
-export default HomePage;
+export default CatPage;

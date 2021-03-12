@@ -1,4 +1,6 @@
-export const mapCatInfo = (data: any): any => {
+import { CatBreedImageData, CatBreedSearchedData, CatInfo } from '../types';
+
+export const mapCatInfo = (data: CatBreedImageData): CatInfo => {
   const breed = data.breeds[0];
   const {
     name,
@@ -40,18 +42,18 @@ export const mapCatInfo = (data: any): any => {
   }
 }
 
-export const mapCatImageInfo = (data: any): Array<string> => {
+export const mapCatImageInfo = (data: Array<CatBreedImageData>): Array<string> => {
   const withoutFirst = data.slice(1);
-  return withoutFirst.map((catImageInfo: any) => catImageInfo.url);
+  return withoutFirst.map((catImageInfo: CatBreedImageData) => catImageInfo.url);
 }
 
-export const mapCatImageNameInfo = (data: any): Array<{id: string, name: string, url: string }> => {
+export const mapCatImageNameInfo = (data: Array<CatBreedSearchedData>): Array<{id: string, name: string, url: string }> => {
   console.log(data);
-  const first = data.map((cat: any) => ({
+  const first = data.map((cat: CatBreedSearchedData) => ({
     id: cat.id,
     name: cat.name,
     url: cat.image.url, 
   })).slice(0, 4);
-
+  console.log(first);
   return first;
 }

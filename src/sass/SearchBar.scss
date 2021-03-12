@@ -78,64 +78,113 @@
       background-color: rgba(151, 151, 151, 0.1);
     }
   }
+
+  &__button {
+    display: none;
+  }
+}
+
+.modal, .modal--hidden {
+  display: none;
 }
 
 @media only screen and (max-width: 550px) {
 
   .search {
+    &__button {
+      display: inherit;
+      border: none;
+      font-family: variables.$font-1;
+      border-radius: 59px;
+      color: variables.$brown-1;
+      width: 90px;
+      height: 30px;
+      margin: 20px 0px 26px;
+      font-size: 12px;
+      padding: 0px;
+      font-weight: 500;
+      position: relative;
+      padding-right: 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__button-icon {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      font-size: 20px;
+    }
+
     &__bar {
-      width: 200px;
-      height: 45px;
+      display: none;
+    }
+  }
+
+  .modal--hidden {
+    display: none;
+  }
+
+  .modal {
+    position: fixed;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    background-color: white;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+
+    &__bar {
+      width: auto;
+      height: 100%;
+      margin: 50px 20px;
+      z-index: 13;
+      margin: 0px 20px;
+      display: inherit;
     }
 
     &__bar-input {
-      // position: relative;
+      position: relative;
       width: 100%;
-      font-size: 12px;
-      padding: 10px;
-      // padding: 20px 0;
+      height: 45px;
+      font-size: 18px;
+      color: variables.$brown-1;
     }
 
     &__icon {
-      top: 8px;
-      right: 8px;
+      top: 10px;
+      right: 12px;
       font-size: 16px;
+
+      &--close {
+        display: inline;
+      }
     }
 
-    // &__list {
-    //   overflow-y: initial;
-    // }
+    &__list {
+      overflow-y: initial;
+    }
 
-    // &__bar--modal, &__icon--modal {
-    //   display: inherit;
-    // }
+    &__panel {
+      width: 100%;
+      z-index: 14;
+    }
 
-    // &__icon--modal {
-    //   position: absolute;
-    //   top: 90px;
-    //   right: 40px;
-    // }
-
-    // &__panel {
-    //   height: auto;
-    //   width: auto;
-    //   position: fixed;
-    //   top: 0;
-    //   bottom: 0;
-    //   right: 0;
-    //   left: 0;
-    //   padding: 20px;
-    //   max-height: auto;
-    // }
-
-    // &__btn {
-    //   height: 40px;
-    //   width: 40px;
-    //   border: none;
-    //   background-color: rgba(151, 151, 151, 0.1);
-    //   border-radius: 8px;
-    //   float: right;
-    //   margin-bottom: 30px;
-    // }
+    &__btn {
+      height: 46px;
+      width: 40px;
+      border: none;
+      background-color: rgba(151, 151, 151, 0.1);
+      border-radius: 8px;
+      margin: 4px 4px 30px;
+      align-self: flex-end;
+      display: block;
+    }
   }
 }

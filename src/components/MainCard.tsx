@@ -10,7 +10,7 @@ import '../sass/MainCard.scss';
 const MainCard = ({ data }: { data: Array<{id: string, name: string, url: string }>}) => {
   const history = useHistory();
 
-  const list = data.map((cat: any) => (
+  const list = data.map((cat: {id: string, name: string, url: string }) => (
     <div key={cat.id} className="main-card__cat-row-element">
       <img onClick={() => history.push(`/breeds/${cat.id}`)} src={cat.url} className="main-card__cat-row-image"></img>
       <p className="main-card__cat-row-text">{cat.name}</p>

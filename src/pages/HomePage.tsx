@@ -5,11 +5,12 @@ import MainCard from '../components/MainCard';
 import InfoCard from '../components/InfoCard';
 import Loader from '../components/Loader';
 import { mapCatImageNameInfo } from '../util/mapInfo';
+import { CatBreedSearchedData } from '../types';
+
 
 const HomePage = () => {
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<Array<{id: string, name: string, url: string }>>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -17,18 +18,14 @@ const HomePage = () => {
       await axios.get('/api/cats/').then(
         (res) => {
           setLoading(false);
-          const sorted = res.data.mostPopularBreeds.sort((a: any, b: any) => b.searched - a.searched);
-          console.log(sorted);
+          const sorted = res.data.mostPopularBreeds.sort((a: CatBreedSearchedData, b: CatBreedSearchedData) => b.searched - a.searched);
+          console.log(sorted, 'sorted');
           setData(mapCatImageNameInfo(sorted));
         },
         (err) => {
+          console.log(err);
           setLoading(false);
-          setError(
-            err.response.data.message ||
-              `${err.response.status}: ${err.response.statusText}`,
-          );
-        },
-      );
+    });
     };
     getCatInfo();
   }, []);
@@ -37,12 +34,12 @@ const HomePage = () => {
     return <Loader />
   }
 
-   return (
-     <div className="home-page">
-       <MainCard data={data} />
-       <InfoCard />
-     </div>
-   )
+  return (
+    <div className="home-page">
+      <MainCard data={data} />
+      <InfoCard />
+    </div>
+  );
 }
 
 export default HomePage;
