@@ -3,10 +3,11 @@
 .cat-info-card {
   display: flex;
   flex-direction: row;
+  column-gap: 40px;
 
-  &__table {
-    padding: 0px 40px 20px;
-  }
+  // &__table {
+  //   padding: 0px 40px 20px;
+  // }
 
   &__photo-wrapper {
     position: relative;
@@ -71,6 +72,7 @@ tr {
     row-gap: 30px;
 
     &__photo-wrapper, &__photo {
+      margin: 0px auto;
       width: 160px;
       height: 160px;
     }

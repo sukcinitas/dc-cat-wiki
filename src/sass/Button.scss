@@ -24,5 +24,9 @@
   .btn {
     font-size: 12px;
     margin-top: 35px;
+
+    &__icon {
+      top: 7px;
+    }
   }
 }

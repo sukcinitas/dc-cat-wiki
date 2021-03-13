@@ -19,7 +19,6 @@ const HomePage = () => {
         (res) => {
           setLoading(false);
           const sorted = res.data.mostPopularBreeds.sort((a: CatBreedSearchedData, b: CatBreedSearchedData) => b.searched - a.searched);
-          console.log(sorted, 'sorted');
           setData(mapCatImageNameInfo(sorted));
         },
         (err) => {

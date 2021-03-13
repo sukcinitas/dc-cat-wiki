@@ -30,7 +30,7 @@
     padding: 0px 0px 24px;
 
     &-bold {
-      font-size: 36px; 
+      font-size: 48px; 
       font-weight: 600;
       max-width: 100%;
       padding: 10px 0px 52px;
@@ -44,6 +44,14 @@
 
     &--with-line {
       font-size: 40px;
+    }
+
+    &--small {
+      font-size: 36px;
+    }
+
+    &-bold {
+      font-weight: 48px;
     }
   }
 }

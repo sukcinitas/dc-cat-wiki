@@ -121,6 +121,10 @@
     &__bar {
       display: none;
     }
+
+    &__panel {
+      width: auto;
+    }
   }
 
   .modal--hidden {
