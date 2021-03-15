@@ -6,12 +6,13 @@
 
   &__top-section {
     padding: 114px 108px 100px;
-    background: url('../assets/HeroImagelg.png');
+    background: url('../assets/HeroImagemd.jpg');
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
     border-top-left-radius: 42px;
     border-top-right-radius: 42px;
+    position: relative;
   }
 
   &__logo {
@@ -92,11 +93,12 @@
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (min-width: 0px) and (max-width: 550px) {
 
   .main-card {
     &__top-section {
       padding: 20px 30px 20px;
+      background-image: url('../assets/HeroImagesm.jpg');
     }
 
     &__logo {
@@ -131,6 +133,30 @@
     &__cat-row-text {
       font-size: 12px;
       margin: 12px;
+    }
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 550px) {
+  .main-card {
+    &__top-section {
+      background-image: url('../assets/HeroImagesm.jpg');
+    }
+  }
+}
+
+@media only screen and (min-width: 551px) and (max-width: 1440px) {
+  .main-card {
+    &__top-section {
+      background-image: url('../assets/HeroImagemd.jpg');
+    }
+  }
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1800px) {
+  .main-card {
+    &__top-section {
+      background-image: url('../assets/HeroImagelg.jpg');
     }
   }
 }
