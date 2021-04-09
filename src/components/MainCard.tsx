@@ -7,14 +7,14 @@ import Heading from './Heading';
 import Button from './Button';
 import '../sass/MainCard.scss';
 
-const MainCard = ({ data }: { data: Array<{id: string, name: string, url: string }>}) => {
+const MainCard = ({ data, cb }: { data: Array<{id: string, name: string, url: string }>, cb: () => void }) => {
   const history = useHistory();
 
   const list = data.map((cat: {id: string, name: string, url: string }) => (
     <div key={cat.id} className="main-card__cat-row-element">
       <div className="main-card__cat-row-wrapper">
         <span className="main-card__cat-row-detail"></span>
-        <img onClick={() => history.push(`/breeds/${cat.id}`)} src={cat.url} className="main-card__cat-row-image"></img>
+        <img onLoad={cb} onClick={() => history.push(`/breeds/${cat.id}`)} src={cat.url} className="main-card__cat-row-image"></img>
       </div>
       <p className="main-card__cat-row-text">{cat.name}</p>
     </div> 
@@ -23,7 +23,7 @@ const MainCard = ({ data }: { data: Array<{id: string, name: string, url: string
   return (
     <div className="main-card">
       <section className="main-card__top-section">
-        <img src={image} className="main-card__logo" />
+        <img onLoad={cb} src={image} className="main-card__logo" />
         <p className="main-card__text">Get to know more about your cat breed</p>
         <SearchBar />
       </section>

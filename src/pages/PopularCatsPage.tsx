@@ -10,6 +10,7 @@ import { CatBreedSearchedData } from '../types';
 const PopularCatsPage = () => {
   const [data, setData] = useState<Array<CatBreedSearchedData>>([]);
   const [loading, setLoading] = useState(true);
+  const [imgLoaded, setImgLoaded] = useState(1);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -33,9 +34,13 @@ const PopularCatsPage = () => {
     getCatInfo();
   }, []);
 
-  const list = data.map((cat: CatBreedSearchedData, index: number) => <CatCard key={cat.id} id={cat.id} index={index + 1} name={cat.name} description={cat.description} url={cat.image.url } />)
+  const setImgLoadedCount = () => {
+    setImgLoaded(imgLoaded + 1);
+  }
 
-  if (loading) {
+  const list = data.map((cat: CatBreedSearchedData, index: number) => <CatCard key={cat.id} id={cat.id} index={index + 1} name={cat.name} description={cat.description} url={cat.image.url } cb={setImgLoadedCount}/>)
+
+  if (loading && imgLoaded < 10) {
     return <Loader />
   }
 

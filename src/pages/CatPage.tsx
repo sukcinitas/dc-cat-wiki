@@ -11,6 +11,7 @@ import { CatInfo } from '../types';
 
 const CatPage = () => {
   const { breedId } = useParams<{breedId: string}>() || window.location.pathname.split('/')[2];
+  const [imgLoaded, setImgLoaded] = useState(1);
   const [catInfo, setCatInfo] = useState<CatInfo>(
     {
       url: '',
@@ -66,7 +67,11 @@ const CatPage = () => {
     getCatImageInfo(breedId);
   }, [breedId]);
 
-  if (loading) {
+  const setImgLoadedCount = () => {
+    setImgLoaded(imgLoaded + 1);
+  }
+
+  if (loading && imgLoaded < 2 + catImageInfo.length) {
     return <Loader />
   }
 
@@ -76,8 +81,8 @@ const CatPage = () => {
 
    return (
      <div className="cat-page">
-       <CatInfoCard catInfo={catInfo} />
-       <OtherPhotos catImageInfo={catImageInfo} />
+       <CatInfoCard catInfo={catInfo} cb={setImgLoadedCount} />
+       <OtherPhotos catImageInfo={catImageInfo} cb={setImgLoadedCount} />
      </div>
    )
 }

@@ -28,14 +28,15 @@ type TCatInfoCardProps = {
         stranger_friendly: number,
       },
     }
-  }
+  },
+  cb: () => void,
 };
 
-const CatInfoCard = ({catInfo: { name, description, url, qualities }}: TCatInfoCardProps) => {
+const CatInfoCard = ({catInfo: { name, description, url, qualities }, cb }: TCatInfoCardProps) => {
   return (
     <section className="cat-info-card">
       <div className="cat-info-card__photo-wrapper">
-        <img src={url} className="cat-info-card__photo"></img>
+        <img onLoad={cb} src={url} className="cat-info-card__photo"></img>
         <span className="cat-info-card__detail"></span>
       </div>
       <div className="cat-info-card__table">

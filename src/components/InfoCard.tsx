@@ -10,7 +10,7 @@ import Heading from './Heading';
 import Paragraph from './Paragraph';
 import Button from './Button';
 
-const InfoCard = () => { 
+const InfoCard = ({ cb }: { cb: () => void }) => { 
   const history = useHistory();
   return (
     <div className="info-card">
@@ -22,13 +22,13 @@ const InfoCard = () => {
         <Button cb={() => history.push('/about')}>Read more</Button>
       </section>
       <div className="info-card__pic-wrapper">
-        <img src={image2} className="info-card__pic--1" />
+        <img onLoad={cb} src={image2} className="info-card__pic--1" />
         </div>
       <div className="info-card__pic-wrapper">
-        <img src={image3} className="info-card__pic--2" />
+        <img onLoad={cb} src={image3} className="info-card__pic--2" />
         </div>
       <div className="info-card__pic-wrapper">
-        <img src={image1} className="info-card__pic--3" />
+        <img onLoad={cb} src={image1} className="info-card__pic--3" />
       </div>
     </div>
   );

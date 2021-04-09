@@ -11,6 +11,7 @@ import { CatBreedSearchedData } from '../types';
 const HomePage = () => {
   const [data, setData] = useState<Array<{id: string, name: string, url: string }>>([]);
   const [loading, setLoading] = useState(true);
+  const [imgLoaded, setImgLoaded] = useState(1);
 
   useEffect(() => {
     setLoading(true);
@@ -29,14 +30,18 @@ const HomePage = () => {
     getCatInfo();
   }, []);
 
-  if (loading) {
+  const setImgLoadedCount = () => {
+    setImgLoaded(imgLoaded + 1);
+  }
+
+  if (loading && imgLoaded < 8) {
     return <Loader />
   }
 
   return (
     <div className="home-page">
-      <MainCard data={data} />
-      <InfoCard />
+      <MainCard data={data} cb={setImgLoadedCount} />
+      <InfoCard cb={setImgLoadedCount} />
     </div>
   );
 }
