@@ -56,7 +56,27 @@
   }
 }
 
-@media only screen and (max-width: 1200px) and (min-width: 550px) {
+@media only screen and (max-width: 1200px) and (min-width: 801px) {
+  .info-card {
+    margin: 100px 108px;
+    display: grid;
+    grid-template-rows: 3fr 1fr 2fr;
+    grid-template-columns: 2fr 2fr;
+    grid-template-areas: "info info" 
+                         "pic1 pic2" 
+                         "pic3 pic2";  
+    column-gap: 28px;
+    row-gap: 28px;
+
+    &__info {
+      margin-bottom: 30px;
+    }
+    max-height: 900px;
+  }
+
+}
+
+@media only screen and (max-width: 800px) and (min-width: 621px) {
   .info-card {
     margin: 100px 0px;
     display: grid;
@@ -71,11 +91,12 @@
     &__info {
       margin-bottom: 30px;
     }
+    max-height: 900px;
   }
 
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 620px) {
   .info-card {
     margin: 100px 0px;
     display: grid;

@@ -12,7 +12,10 @@ const MainCard = ({ data }: { data: Array<{id: string, name: string, url: string
 
   const list = data.map((cat: {id: string, name: string, url: string }) => (
     <div key={cat.id} className="main-card__cat-row-element">
-      <img onClick={() => history.push(`/breeds/${cat.id}`)} src={cat.url} className="main-card__cat-row-image"></img>
+      <div className="main-card__cat-row-wrapper">
+        <span className="main-card__cat-row-detail"></span>
+        <img onClick={() => history.push(`/breeds/${cat.id}`)} src={cat.url} className="main-card__cat-row-image"></img>
+      </div>
       <p className="main-card__cat-row-text">{cat.name}</p>
     </div> 
   ));

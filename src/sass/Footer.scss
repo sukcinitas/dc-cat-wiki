@@ -1,10 +1,6 @@
 @use 'variables';
 
 .footer {
-  // position: fixed;
-  // bottom: 0;
-  // left: 6%;
-  // right: 6%;
   flex-basis: 120px;
   background-color: variables.$dark-1;
   border-top-left-radius: 42px;
@@ -86,7 +82,7 @@
     left: 18px;
     right: 18px;
     padding: 30px 32px 24px;
-    padding-right: 4px;
+    padding-right: 10px;
 
     &__logo {
       height: 26px;

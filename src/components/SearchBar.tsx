@@ -34,7 +34,7 @@ const SearchBar = () => {
         (res) => {
           const { data: { success, searchList, message }} = res;
           if (success) {
-            if (searchList.length === 1 && searchList[0].name === searchQuery) {
+            if (searchList.length === 1 && searchList[0].name.toLowerCase() === searchQuery.toLowerCase()) {
               setSelectedBreedId(searchList[0].id);
               setList([]);
             } else {
@@ -65,6 +65,9 @@ const SearchBar = () => {
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
+    if (!selectedBreedId) {
+      return;
+    }
     history.push(`/breeds/${selectedBreedId}`);
   }
 

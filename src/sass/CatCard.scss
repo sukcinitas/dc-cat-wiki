@@ -12,11 +12,19 @@
     align-self: center;
     border-radius: 24px;
     object-fit: cover;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__info {
     margin-left: 50px;
     width: 70%;
+
+    & h4:hover {
+      cursor: pointer;
+    }
   }
 }
 

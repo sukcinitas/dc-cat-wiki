@@ -60,6 +60,24 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 
+    &-wrapper {
+      position: relative;
+    }
+
+    &-element:first-child {
+      position: relative;
+
+      & .main-card__cat-row-detail {
+        position: absolute;
+        height: 80%;
+        width: 20%;
+        left: -4%;
+        border-radius: 14px;
+        background-color: variables.$yellow-1;
+        top: 10%
+      }
+    }
+
     &-image {
       height: 220px;
       width: 220px;
@@ -81,6 +99,7 @@
         z-index: -1;
         position: absolute;
       }
+
     }
 
     &-text {
@@ -145,7 +164,20 @@
   }
 }
 
-@media only screen and (min-width: 551px) and (max-width: 1440px) {
+@media only screen and (min-width: 551px) and (max-width: 730px) {
+  .main-card {
+    &__top-section {
+      background-image: url('../assets/HeroImagemd.jpg');
+      padding: 30px 50px 40px;
+    }
+
+    &__bottom-section {
+      padding: 46px 50px 100px;
+    }
+  }
+}
+
+@media only screen and (min-width: 731px) and (max-width: 1440px) {
   .main-card {
     &__top-section {
       background-image: url('../assets/HeroImagemd.jpg');

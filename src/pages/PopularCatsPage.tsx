@@ -33,7 +33,7 @@ const PopularCatsPage = () => {
     getCatInfo();
   }, []);
 
-  const list = data.map((cat: CatBreedSearchedData, index: number) => <CatCard key={cat.id} index={index + 1} name={cat.name} description={cat.description} url={cat.image.url } />)
+  const list = data.map((cat: CatBreedSearchedData, index: number) => <CatCard key={cat.id} id={cat.id} index={index + 1} name={cat.name} description={cat.description} url={cat.image.url } />)
 
   if (loading) {
     return <Loader />

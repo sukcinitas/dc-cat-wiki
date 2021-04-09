@@ -108,6 +108,8 @@
 
       &:hover {
         cursor: pointer;
+        color: variables.$brown-1;
+        background-color: variables.$bright-1;
       }
     }
 
@@ -124,6 +126,7 @@
 
     &__panel {
       width: auto;
+      top: 130px;
     }
   }
 
@@ -173,6 +176,7 @@
 
     &__list {
       overflow-y: initial;
+      margin: 10px 20px;
     }
 
     &__panel {
