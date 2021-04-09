@@ -6,6 +6,7 @@ import TerserPlugin from "terser-webpack-plugin";
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 const config: webpack.Configuration = {
@@ -51,27 +52,32 @@ const config: webpack.Configuration = {
         test: /\.(png|jpg|gif|jpeg|ttf)$/,
           use: [
           {
-              loader: 'file-loader',
+            loader: 'file-loader',
           }
           ]
       },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: "template.html",
+      template: 'template.html',
     }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
     }),
     new ESLintPlugin({
-      extensions: ["js", "jsx", "ts", "tsx"],
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
     }),
     new CleanWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/assets/redirects', to: '' },
+      ]
+    }),
   ],
   optimization: {
     minimize: true,
