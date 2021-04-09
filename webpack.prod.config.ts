@@ -75,7 +75,7 @@ const config: webpack.Configuration = {
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [
-        { from: 'src/assets/redirects', to: 'public' },
+        { from: 'src/assets/redirects', to: '' },
       ]
     }),
   ],
