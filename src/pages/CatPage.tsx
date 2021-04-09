@@ -10,7 +10,7 @@ import { mapCatInfo, mapCatImageInfo } from '../util/mapInfo';
 import { CatInfo } from '../types';
 
 const CatPage = () => {
-  const { breedId } = useParams<{breedId: string}>();
+  const { breedId } = useParams<{breedId: string}>() || window.location.pathname.split('/')[2];
   const [catInfo, setCatInfo] = useState<CatInfo>(
     {
       url: '',
