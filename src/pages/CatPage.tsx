@@ -11,7 +11,8 @@ import { CatInfo } from '../types';
 
 const CatPage = () => {
   const { breedId } = useParams<{breedId: string}>() || window.location.pathname.split('/')[2];
-  const [imgLoaded, setImgLoaded] = useState(1);
+  const [imgLoaded, setImgLoaded] = useState(0);
+  const [length, setLength] = useState(0);
   const [catInfo, setCatInfo] = useState<CatInfo>(
     {
       url: '',
@@ -46,11 +47,12 @@ const CatPage = () => {
       axios.get(`/api/cats/images?breedId=${breedId}&limit=9`).then(
         (res) => {
           const { data: { success, catInfo, message } } = res;
-          setLoading(false);
           if (success) {
             const firstElem = mapCatInfo(catInfo[0]);
             setCatInfo(firstElem);
             setCatImageInfo(mapCatImageInfo(catInfo));
+            setLength(catInfo.length);
+            setLoading(false);
           } else {
             setError(message);
           }
@@ -71,19 +73,18 @@ const CatPage = () => {
     setImgLoaded(imgLoaded + 1);
   }
 
-  if (loading && imgLoaded < 2 + catImageInfo.length) {
-    return <Loader />
-  }
-
   if (error) {
     return <ErrorMessage>{error}</ErrorMessage>
   }
 
    return (
-     <div className="cat-page">
-       <CatInfoCard catInfo={catInfo} cb={setImgLoadedCount} />
-       <OtherPhotos catImageInfo={catImageInfo} cb={setImgLoadedCount} />
-     </div>
+     <>
+     {(loading || imgLoaded < length) && <Loader />}
+      <div className="cat-page">
+        <CatInfoCard catInfo={catInfo} cb={setImgLoadedCount} />
+        <OtherPhotos catImageInfo={catImageInfo} cb={setImgLoadedCount} />
+      </div>
+     </>
    )
 }
 
