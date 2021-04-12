@@ -20,6 +20,20 @@ body {
   justify-content: space-between;
 }
 
+.read-more-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  align-items: center;
+
+  &__link {
+    font-family: variables.$font-1;
+    color: variables.$dark-1;
+    font-size: 16px;
+    padding: 20px 0px;
+  }
+}
+
 .home-page {
   &--loading {
     height: 0vh;
