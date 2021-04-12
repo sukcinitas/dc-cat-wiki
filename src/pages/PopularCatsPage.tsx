@@ -47,7 +47,7 @@ const PopularCatsPage = () => {
    return (
      <>
      {(loading || imgLoaded < 10) && <Loader />}
-      <div className="popular-cats-page">
+     <div className={(loading || imgLoaded < 10) ? 'popular-cats-page--loading' : 'popular-cats-page'}>
         <Heading type="small-bold">Top 10 most searched breeds</Heading>
         {list}
       </div>

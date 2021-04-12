@@ -80,7 +80,7 @@ const CatPage = () => {
    return (
      <>
      {(loading || imgLoaded < length) && <Loader />}
-      <div className="cat-page">
+     <div className={(loading || imgLoaded < length) ? 'cat-page--loading' : 'cat-page'}>
         <CatInfoCard catInfo={catInfo} cb={setImgLoadedCount} />
         <OtherPhotos catImageInfo={catImageInfo} cb={setImgLoadedCount} />
       </div>

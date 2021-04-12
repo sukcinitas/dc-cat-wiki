@@ -20,9 +20,21 @@ body {
   justify-content: space-between;
 }
 
+.home-page {
+  &--loading {
+    height: 0vh;
+    overflow: hidden;
+  }
+}
+
 .cat-page {
   align-self: flex-start;
   margin: 10px auto 50px;
+
+  &--loading {
+    height: 0vh;
+    overflow: hidden;
+  }
 }
 
 .popular-cats-page {
@@ -30,6 +42,11 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 55px;
+
+    &--loading {
+    height: 0vh;
+    overflow: hidden;
+  }
 }
 
 ::-webkit-scrollbar {

@@ -4,6 +4,7 @@ import axios from 'axios';
 import MainCard from '../components/MainCard';
 import InfoCard from '../components/InfoCard';
 import Loader from '../components/Loader';
+import ErrorMessage from '../components/ErrorMessage';
 import { mapCatImageNameInfo } from '../util/mapInfo';
 import { CatBreedSearchedData } from '../types';
 
@@ -11,6 +12,7 @@ import { CatBreedSearchedData } from '../types';
 const HomePage = () => {
   const [data, setData] = useState<Array<{id: string, name: string, url: string }>>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [imgLoaded, setImgLoaded] = useState(0);
 
   useEffect(() => {
@@ -24,6 +26,10 @@ const HomePage = () => {
         },
         (err) => {
           setLoading(false);
+          setError(
+            err.response.data ? err.response.data.message :
+              `${err.response.status}: ${err.response.statusText}`,
+          );
     });
     };
     getCatInfo();
@@ -33,10 +39,14 @@ const HomePage = () => {
     setImgLoaded(imgLoaded + 1);
   }
 
+  if (error) {
+    return <ErrorMessage>{error}</ErrorMessage>
+  }
+
   return (
     <>
       {(loading || imgLoaded < 8) && <Loader />}
-      <div className="home-page">
+      <div className={(loading || imgLoaded < 8) ? 'home-page--loading' : 'home-page'}>
         <MainCard data={data} cb={setImgLoadedCount} />
         <InfoCard cb={setImgLoadedCount} />
       </div>

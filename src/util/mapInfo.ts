@@ -48,12 +48,10 @@ export const mapCatImageInfo = (data: Array<CatBreedImageData>): Array<string> =
 }
 
 export const mapCatImageNameInfo = (data: Array<CatBreedSearchedData>): Array<{id: string, name: string, url: string }> => {
-  console.log(data);
   const first = data.map((cat: CatBreedSearchedData) => ({
     id: cat.id,
     name: cat.name,
     url: cat.image.url, 
   })).slice(0, 4);
-  console.log(first);
   return first;
 }
