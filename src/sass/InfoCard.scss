@@ -96,11 +96,11 @@
 
 }
 
-@media only screen and (max-width: 620px) {
+@media only screen and (max-width: 620px)  and (min-width: 381px) {
   .info-card {
     margin: 100px 0px;
     display: grid;
-    grid-template-rows: 3fr 1fr 2fr;
+    grid-template-rows: 4fr 1fr 2fr;
     grid-template-columns: 2fr 2fr;
     grid-template-areas: "info info" 
                          "pic1 pic2" 
@@ -124,6 +124,40 @@
   
       &--3 {
         max-height: 184px;
+      }
+    }
+  }
+
+}
+
+@media only screen and (max-width: 380px) {
+  .info-card {
+    margin: 100px 0px;
+    display: grid;
+    grid-template-rows: 4fr 1fr 2fr;
+    grid-template-columns: 6fr 5fr;
+    grid-template-areas: "info info" 
+                         "pic1 pic2" 
+                         "pic3 pic2";  
+    column-gap: 10px;
+    row-gap: 10px;
+    max-height: none;
+
+    &__info {
+      margin-bottom: 40px;
+    }
+
+    &__pic {
+      &--1 {
+        max-height: 100px;
+      }
+  
+      &--2 {
+        max-height: 212px
+      }
+  
+      &--3 {
+        max-height: 170px;
       }
     }
   }
