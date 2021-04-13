@@ -45,6 +45,7 @@
       position: absolute;
       bottom: -8px;
       display: block;
+      border-radius: 77px;
     }
   }
 
@@ -59,6 +60,7 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    column-gap: 10px;
 
     &-wrapper {
       position: relative;
@@ -121,11 +123,13 @@
     }
 
     &__logo {
-      height: 19px;
+      height: 26px;
+      margin-bottom: 6px;
     }
 
     &__text {
       font-size: 10px;
+      max-width: 50%;
     }
 
     &__bottom-section {
@@ -160,6 +164,10 @@
   .main-card {
     &__top-section {
       background-image: url('../assets/HeroImagesm.jpg');
+      padding: 20px 30px 0;
+    }
+    &__wrapper {
+      margin: 18px 0;
     }
   }
 }

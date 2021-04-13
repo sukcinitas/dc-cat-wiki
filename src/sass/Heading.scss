@@ -7,9 +7,10 @@
   font-weight: 700;
   position: relative;
   max-width: 60%;
-  padding: 0px 0px 40px;
+  // padding: 0px 0px 40px;
   
   &--with-line {
+    padding: 0px 0px 40px;
     max-width: 100%;
     &::before {
       content: '';

@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from "react-router-dom";
 
 import image from '../assets/CatwikiLogoWhite.svg';
+import imageSmall from '../assets/CatwikiLogoSmall.svg';
 import SearchBar from './SearchBar';
 import Heading from './Heading';
 import Button from './Button';
@@ -23,7 +24,12 @@ const MainCard = ({ data, cb }: { data: Array<{id: string, name: string, url: st
   return (
     <div className="main-card">
       <section className="main-card__top-section">
-        <img onLoad={cb} src={image} className="main-card__logo" />
+        {/* <img onLoad={cb} src={image} className="main-card__logo" /> */}
+        <picture>
+          <source media="(min-width:550px)" srcSet={image} />
+          <source media="(min-width:0px)" srcSet={imageSmall} />
+          <img onLoad={cb} src={image} className="main-card__logo" alt="A cat" />
+        </picture>
         <p className="main-card__text">Get to know more about your cat breed</p>
         <SearchBar />
       </section>
