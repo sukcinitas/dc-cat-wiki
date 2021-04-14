@@ -98,7 +98,7 @@
 
 @media only screen and (max-width: 620px)  and (min-width: 381px) {
   .info-card {
-    margin: 100px 0px;
+    margin: 60px 0px 20px;
     display: grid;
     grid-template-rows: 4fr 1fr 2fr;
     grid-template-columns: 2fr 2fr;
@@ -132,7 +132,7 @@
 
 @media only screen and (max-width: 380px) {
   .info-card {
-    margin: 100px 0px;
+    margin: 60px 0px 20px;
     display: grid;
     grid-template-rows: 4fr 1fr 2fr;
     grid-template-columns: 6fr 5fr;
@@ -143,9 +143,9 @@
     row-gap: 10px;
     max-height: none;
 
-    &__info {
-      margin-bottom: 40px;
-    }
+    // &__info {
+    //   margin-bottom: 40px;
+    // }
 
     &__pic {
       &--1 {

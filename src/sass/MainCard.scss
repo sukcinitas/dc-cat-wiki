@@ -24,6 +24,7 @@
     font-family: variables.$font-1;
     font-size: 24px;
     font-weight: 500;
+    max-width: 40%;
   }
 
   &__bottom-section {
@@ -73,7 +74,7 @@
         position: absolute;
         height: 80%;
         width: 20%;
-        left: -4%;
+        left: -6%;
         border-radius: 14px;
         background-color: variables.$yellow-1;
         top: 10%
@@ -105,7 +106,7 @@
     }
 
     &-text {
-      color: variables.$brown-3;
+      color: variables.$brown-1;
       font-size: 18px;
       font-family: variables.$font-1;
       font-weight: 600;
@@ -129,7 +130,6 @@
 
     &__text {
       font-size: 10px;
-      max-width: 50%;
     }
 
     &__bottom-section {
@@ -146,6 +146,13 @@
 
     &__cat-row {
       justify-content: space-around;
+
+      &-element:first-child {
+
+        & .main-card__cat-row-detail {
+          left: -4%;
+        }
+      }
     }
 
     &__cat-row-image {

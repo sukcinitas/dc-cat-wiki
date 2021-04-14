@@ -7,7 +7,6 @@
   font-weight: 700;
   position: relative;
   max-width: 60%;
-  // padding: 0px 0px 40px;
   
   &--with-line {
     padding: 0px 0px 40px;
@@ -28,13 +27,13 @@
     font-size: 36px; 
     font-weight: 600;
     max-width: 100%;
-    padding: 0px 0px 24px;
+    padding: 0px 0px 40px;
 
     &-bold {
       font-size: 48px; 
-      font-weight: 600;
+      font-weight: 700;
       max-width: 100%;
-      padding: 10px 0px 52px;
+      padding: 10px 0px 0px;
     }
   }
 }

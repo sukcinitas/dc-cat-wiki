@@ -52,14 +52,14 @@ body {
 }
 
 .popular-cats-page {
-  margin: 50px auto 100px;
+  margin: 10px auto 110px;
   display: flex;
   flex-direction: column;
   row-gap: 55px;
 
     &--loading {
-    height: 0vh;
-    overflow: hidden;
+      height: 0vh;
+      overflow: hidden;
   }
 }
 
