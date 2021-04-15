@@ -10,7 +10,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://devchallenges.io/solutions/JMXSO2MC3NWHkL3VUT1i">
       Solution
     </a>
     <span> | </span>
@@ -28,19 +28,22 @@
   - [Built With](#built-with)
 - [Features](#features)
 - [How to use](#how-to-use)
-- [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
 <!-- OVERVIEW -->
 
 ## Overview
 
+An app to get information about cat breeds from CatAPI and to keep track of most searched ones. It has a complementary api [here](https://github.com/sukcinitas/dc-cat-wiki-api). You can find an application demo [here](https://cats-wiki.netlify.app/) (it might take a little while for server to wake up).
+This project helped me improve my skills with images, responsiveness and TypeScript. 
+
 ![gif](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWiki01.gif)
+---
 ![gif](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWIki02.gif)
+---
 ![gif](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWIki03.gif)
 
-An app to get information about cat breeds from CatAPI and to keep track of most searched ones. It has a complementary api [here](https://github.com/sukcinitas/dc-cat-wiki-api). You can find an application demo [here](https://cats-wiki.netlify.app/) (it might take a little while for server to wake up).
-This project helped me improve my skills in images, responsiveness and TypeScript. 
 
 ### Built With
 
@@ -76,8 +79,6 @@ This application/site was created as a submission to a [DevChallenges](https://d
 - I can go to a page about cats when I click read more on Why you should have a cat section
 
 ## How To Use
-
-<!-- Example: -->
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
