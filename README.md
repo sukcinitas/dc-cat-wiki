@@ -1,4 +1,4 @@
-<h1 align="center">Cat Wiki API</h1>
+<h1 align="center">DC Cat Wiki</h1>
 
 <div align="center">
    Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
@@ -36,11 +36,11 @@
 ## Overview
 
 ![gif](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWiki01.gif)
-![gif](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWiki02.gif)
-![gif](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWiki03.gif)
+![gif](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWIki02.gif)
+![gif](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWIki03.gif)
 
-An api to get information about cat breeds from CatAPI and to keep track of most searched ones. It has a complementary api [here](https://github.com/sukcinitas/dc-cat-wiki-api). You can find an application demo [here](https://cats-wiki.netlify.app/) (it might take a little while for server to wake up).
-This project helped me improve working with images, responsiveness and TypeScript. 
+An app to get information about cat breeds from CatAPI and to keep track of most searched ones. It has a complementary api [here](https://github.com/sukcinitas/dc-cat-wiki-api). You can find an application demo [here](https://cats-wiki.netlify.app/) (it might take a little while for server to wake up).
+This project helped me improve my skills in images, responsiveness and TypeScript. 
 
 ### Built With
 
@@ -65,17 +65,15 @@ This project helped me improve working with images, responsiveness and TypeScrip
 
 ## Features
 
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
-
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/f4NJ53rcfgrP6sBMD2jt) was to build an application to complete the given user stories.
 
 - I can search for cat breeds and select a breed of my choice
-- I can see the most popular searched cat breeds summary on the homepage
-- I can see the top 10 most searched cat breeds
+- I can see the summaries of the most searched cat breeds on the homepage
 - I can see the breed details including description, temperament, origin, life span, adaptability, affection level, child-friendly, grooming, intelligence, health issues, social needs, stranger friendly
 - I can see more photos of the breed
 - On mobile, when I select the search option, a modal for breed search should pop up
-- I can go to the top 10 cats by clicking see more in the dashboard
+- I can go to the top 10 most searched cats by clicking see more in the dashboard
+- I can go to a page about cats when I click read more on Why you should have a cat section
 
 ## How To Use
 
@@ -85,7 +83,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/sukcinitas/dc-cat-wiki.git
 
 # Install dependencies
 $ npm install
@@ -93,10 +91,14 @@ $ npm install
 # Run the app
 $ npm start
 ```
+Information how to clone and run complementary api is [here](https://github.com/sukcinitas/dc-cat-wiki-api).
 
 ## Acknowledgements
 
 - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
+- [Understanding React Portals and Its Use Cases](https://blog.bitsrc.io/understanding-react-portals-ab79827732c7)
+- [Redirects and rewrites in Netlify](https://docs.netlify.com/routing/redirects/)
+- [Responsive Images](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
 
 ## Contact
 
