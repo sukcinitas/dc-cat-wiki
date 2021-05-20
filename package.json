@@ -28,6 +28,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.13.9",
     "@types/axios": "^0.14.0",
+    "@types/css-minimizer-webpack-plugin": "^1.1.1",
     "@types/fork-ts-checker-webpack-plugin": "^0.4.5",
     "@types/mini-css-extract-plugin": "^1.2.2",
     "@types/react": "^17.0.2",
