@@ -24,12 +24,9 @@ const HomePage = () => {
           const sorted = res.data.mostPopularBreeds.sort((a: CatBreedSearchedData, b: CatBreedSearchedData) => b.searched - a.searched);
           setData(mapCatImageNameInfo(sorted));
         },
-        (err) => {
+        () => {
           setLoading(false);
-          setError(
-            err.response.data ? err.response.data.message :
-              `${err.response.status}: ${err.response.statusText}`,
-          );
+          setError('Something went wrong!');
     });
     };
     getCatInfo();

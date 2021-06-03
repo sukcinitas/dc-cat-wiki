@@ -20,7 +20,7 @@ const App = () => {
             <Route path="/about" component={ReadMorePage} />
             <Route exact path="/" component={HomePage} />
           </Switch>
-        <Route component={Footer} />
+        <Footer />
       </Router>
     </div>
   )

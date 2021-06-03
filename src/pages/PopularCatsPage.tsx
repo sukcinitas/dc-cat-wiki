@@ -22,12 +22,9 @@ const PopularCatsPage = () => {
           const sorted = res.data.mostPopularBreeds.sort((a: CatBreedSearchedData, b: CatBreedSearchedData) => b.searched - a.searched);
           setData(sorted);
         },
-        (err) => {
+        () => {
           setLoading(false);
-          setError(
-            err.response.data.message ||
-              `${err.response.status}: ${err.response.statusText}`,
-          );
+          setError('Something went wrong!');
         },
       );
     };

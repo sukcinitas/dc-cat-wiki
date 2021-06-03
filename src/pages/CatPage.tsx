@@ -57,12 +57,9 @@ const CatPage = () => {
             setError(message);
           }
         },
-        (err) => {
+        () => {
           setLoading(false);
-          setError(
-            err.response.data.message ||
-              `${err.response.status}: ${err.response.statusText}`,
-          );
+          setError('Something went wrong!');
         },
       );
     };
