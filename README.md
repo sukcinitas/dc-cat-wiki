@@ -38,11 +38,11 @@
 An app to get information about cat breeds from CatAPI and to keep track of most searched ones. It has a complementary api [here](https://github.com/sukcinitas/dc-cat-wiki-api). You can find an application demo [here](https://cats-wiki.netlify.app/) (it might take a little while for server to wake up).
 This project helped me improve my skills with images, responsiveness and TypeScript. 
 
-![gif](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWiki01.gif)
----
-![gif](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWIki02.gif)
----
-![gif](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWIki03.gif)
+![](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWiki01.gif)
+
+![](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWIki02.gif)
+
+![](https://github.com/sukcinitas/media/blob/master/cat-wiki/CatWIki03.gif)
 
 
 ### Built With
