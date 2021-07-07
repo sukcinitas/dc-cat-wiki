@@ -14,9 +14,9 @@ const SearchBar = () => {
   const firstUpdate = useRef(true);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (!e.currentTarget.value) {
-      setList([]);
-    }
+    // if (!e.currentTarget.value) {
+    //   setList([]);
+    // }
     setSearchQuery(e.currentTarget.value);
     setError('');
   }
@@ -27,9 +27,9 @@ const SearchBar = () => {
       return;
     }
     const searchBreed = async (searchQuery: string): Promise<void> => {
-      if (!searchQuery) {
-        return;
-      }
+      // if (!searchQuery) {
+      //   return;
+      // }
       axios.get(`/api/cats/search?q=${searchQuery}`).then(
         (res) => {
           const { data: { success, searchList, message }} = res;
@@ -108,6 +108,7 @@ const SearchBar = () => {
             placeholder={error ? error : 'Enter your breed'}
             className="modal__bar-input search__bar-input"
             onChange={handleChange} value={searchQuery}
+            onFocus={handleChange}
             type="text"
           />
           <button type="submit" className="modal__icon search__icon"><span className="material-icons">search</span></button>

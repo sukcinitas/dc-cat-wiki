@@ -4,6 +4,10 @@
   position: relative;
   display: inline-block;
 
+  &:focus, &:active, &:hover {
+    visibility: visible;
+  }
+
   &__bar {
     margin: 50px 0px;
     font-family: variables.$font-1;
@@ -11,6 +15,12 @@
     border-radius: 59px;
     color: variables.$brown-1;
     position: relative;
+
+    &:focus, &:active, &:hover {
+      & ~ .search__panel {
+        visibility: visible;
+      }
+    }
   }
 
   &__bar-input {
@@ -23,7 +33,7 @@
     border: 1px solid black;
     padding: 20px 28px;
   
-    &:focus, &:active {
+    &:focus, &:active, &:hover {
       outline: none;
     }
   }
@@ -56,6 +66,11 @@
     background-color: variables.$bright-1;
     z-index: 9;
     padding-right: 12px;
+    visibility: hidden;
+
+    &:focus, &:active, &:hover {
+      visibility: visible;
+    }
   }
 
   &__list {
@@ -88,6 +103,10 @@
   display: none;
 }
 
+.modal__panel {
+  visibility: visible;
+}
+
 @media only screen and (max-width: 550px) {
 
   .search {
@@ -111,6 +130,11 @@
         color: variables.$brown-1;
         background-color: variables.$bright-1;
       }
+    }
+
+    &__list {
+      max-height: 300px;
+      overflow-y: scroll;
     }
 
     &__button-icon {
@@ -175,8 +199,14 @@
     }
 
     &__list {
-      overflow-y: initial;
+      overflow-y: scroll;
       margin: 10px 20px;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     &__panel {

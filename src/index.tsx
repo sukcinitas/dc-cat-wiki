@@ -4,8 +4,8 @@ import axios from 'axios';
 
 import App from './App';
 
-const location = window.location.href === 'http://localhost:4000/#/' ? 'http://localhost:4000' : 'https://sheltered-lowlands-67991.herokuapp.com/';
-axios.defaults.baseURL = location;
+// const location = window.location.href === 'http://localhost:4000/#/' ? 'http://localhost:4000' : 'https://sheltered-lowlands-67991.herokuapp.com/';
+axios.defaults.baseURL = 'http://localhost:4000';
 
 ReactDOM.render(
   <React.StrictMode>
