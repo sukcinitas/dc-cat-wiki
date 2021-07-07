@@ -5,7 +5,9 @@
   display: inline-block;
 
   &:focus, &:active, &:hover {
-    visibility: visible;
+    & > .search__panel{
+      visibility: visible;
+    }
   }
 
   &__bar {
@@ -78,6 +80,10 @@
     display: block;
     overflow-y: auto;
     margin: 10px;
+
+    &:focus, &:active, &:hover {
+      visibility: visible;
+    }
   }
 
   &__item {
