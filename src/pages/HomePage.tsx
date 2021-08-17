@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
+import useFetch from '../util/useFetch';
 import MainCard from '../components/MainCard';
 import InfoCard from '../components/InfoCard';
 import Loader from '../components/Loader';
@@ -10,31 +10,15 @@ import { CatBreedSearchedData } from '../types';
 
 
 const HomePage = () => {
-  const [data, setData] = useState<Array<{id: string, name: string, url: string }>>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
   const [imgLoaded, setImgLoaded] = useState(0);
-
-  useEffect(() => {
-    setLoading(true);
-    const getCatInfo = async (): Promise<void> => {
-      await axios.get('/api/cats/').then(
-        (res) => {
-          setLoading(false);
-          const sorted = res.data.mostPopularBreeds.sort((a: CatBreedSearchedData, b: CatBreedSearchedData) => b.searched - a.searched);
-          setData(mapCatImageNameInfo(sorted));
-        },
-        () => {
-          setLoading(false);
-          setError('Something went wrong!');
-    });
-    };
-    getCatInfo();
-  }, []);
+  const { loading, error, data } = useFetch('/api/cats/');
 
   const setImgLoadedCount = () => {
     setImgLoaded(imgLoaded + 1);
   }
+
+  const sorted = data?.mostPopularBreeds ? data?.mostPopularBreeds?.sort((a: CatBreedSearchedData, b: CatBreedSearchedData) => b.searched - a.searched) : [];
+  const mapped = mapCatImageNameInfo(sorted);
 
   if (error) {
     return <ErrorMessage>{error}</ErrorMessage>
@@ -44,7 +28,7 @@ const HomePage = () => {
     <>
       {(loading || imgLoaded < 8) && <Loader />}
       <div className={(loading || imgLoaded < 8) ? 'home-page--loading' : 'home-page'}>
-        <MainCard data={data} cb={setImgLoadedCount} />
+        <MainCard data={mapped} cb={setImgLoadedCount} />
         <InfoCard cb={setImgLoadedCount} />
       </div>
     </>

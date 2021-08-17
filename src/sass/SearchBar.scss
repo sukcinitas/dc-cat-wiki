@@ -5,7 +5,7 @@
   display: inline-block;
 
   &:focus, &:active, &:hover {
-    & > .search__panel{
+    & > .search__panel {
       visibility: visible;
     }
   }
@@ -97,6 +97,7 @@
 
     &:hover, &:focus {
       background-color: rgba(151, 151, 151, 0.1);
+      visibility: visible;
     }
   }
 

@@ -14,9 +14,6 @@ const SearchBar = () => {
   const firstUpdate = useRef(true);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    // if (!e.currentTarget.value) {
-    //   setList([]);
-    // }
     setSearchQuery(e.currentTarget.value);
     setError('');
   }
@@ -27,9 +24,6 @@ const SearchBar = () => {
       return;
     }
     const searchBreed = async (searchQuery: string): Promise<void> => {
-      // if (!searchQuery) {
-      //   return;
-      // }
       axios.get(`/api/cats/search?q=${searchQuery}`).then(
         (res) => {
           const { data: { success, searchList, message }} = res;
@@ -56,11 +50,12 @@ const SearchBar = () => {
   }, [searchQuery]);
 
   const selectBreed = (breedName:string, breedId:string, e?: React.KeyboardEvent): void => {
-    if (e && e.charCode !== 13) {
+    if (e && e.key !== '13') {
       return;
     }
     setSearchQuery(breedName);
     setSelectedBreedId(breedId);
+    history.push(`/breeds/${breedId}`);
   }
 
   const handleSubmit = (e: React.FormEvent): void => {
@@ -78,7 +73,7 @@ const SearchBar = () => {
   }
 
   const nameList = list.map((cat: { name: string, id: string }): React.ReactElement => (
-    <li onClick={() => selectBreed(cat.name, cat.id)} onKeyDown={(e) => selectBreed(cat.name, cat.id, e)} key={cat.id} className="search__item">{cat.name}</li>
+    <li tabIndex={0} onClick={() => selectBreed(cat.name, cat.id)} onKeyDown={(e) => selectBreed(cat.name, cat.id, e)} key={cat.id} className="search__item">{cat.name}</li>
   ));
 
   return (

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 
 import CatInfoCard from '../components/CatInfoCard';
@@ -7,64 +6,39 @@ import OtherPhotos from '../components/OtherPhotos';
 import Loader from '../components/Loader';
 import ErrorMessage from '../components/ErrorMessage';
 import { mapCatInfo, mapCatImageInfo } from '../util/mapInfo';
+import useFetch from '../util/useFetch';
 import { CatInfo } from '../types';
 
 const CatPage = () => {
   const { breedId } = useParams<{breedId: string}>() || window.location.pathname.split('/')[2];
   const [imgLoaded, setImgLoaded] = useState(0);
-  const [length, setLength] = useState(0);
-  const [catInfo, setCatInfo] = useState<CatInfo>(
-    {
-      url: '',
-      name: '',
-      description: '',
-      qualities: {
-        textQualities: {
-          temperament: '',
-          origin: '',
-          life_span: '',
+  const { loading, error, data } = useFetch(`/api/cats/images?breedId=${breedId}&limit=9`);
+  const catInfo: CatInfo = data?.catInfo?.[0] ? mapCatInfo(data?.catInfo?.[0]) 
+  :  
+      {
+        url: '',
+        name: '',
+        description: '',
+        qualities: {
+          textQualities: {
+            temperament: '',
+            origin: '',
+            life_span: '',
+          },
+          numberQualities: {
+            adaptability: 0,
+            affection_level: 0,
+            child_friendly: 0,
+            grooming: 0,
+            intelligence: 0,
+            health_issues: 0,
+            social_needs: 0,
+            stranger_friendly: 0,
+          },
         },
-        numberQualities: {
-          adaptability: 0,
-          affection_level: 0,
-          child_friendly: 0,
-          grooming: 0,
-          intelligence: 0,
-          health_issues: 0,
-          social_needs: 0,
-          stranger_friendly: 0,
-        },
-      },
-    }
-  );
-  const [catImageInfo, setCatImageInfo] = useState<Array<string>>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    setLoading(true);
-    const getCatImageInfo = async (breedId: string): Promise<void> => {
-      axios.get(`/api/cats/images?breedId=${breedId}&limit=9`).then(
-        (res) => {
-          const { data: { success, catInfo, message } } = res;
-          if (success) {
-            const firstElem = mapCatInfo(catInfo[0]);
-            setCatInfo(firstElem);
-            setCatImageInfo(mapCatImageInfo(catInfo));
-            setLength(catInfo.length);
-            setLoading(false);
-          } else {
-            setError(message);
-          }
-        },
-        () => {
-          setLoading(false);
-          setError('Something went wrong!');
-        },
-      );
-    };
-    getCatImageInfo(breedId);
-  }, [breedId]);
+      };
+  const catImageInfo: Array<string> = data?.catInfo ? mapCatImageInfo(data?.catInfo) : [];
+  const length: number = data?.catInfo?.length ? data.catInfo.length : 0;
 
   const setImgLoadedCount = () => {
     setImgLoaded(imgLoaded + 1);
