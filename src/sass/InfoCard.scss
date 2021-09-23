@@ -1,4 +1,5 @@
 @use 'variables';
+@use 'mixins';
 
 .info-card {
   margin: 100px 108px;
@@ -52,6 +53,15 @@
     &--3 {
       float: right;
       max-height: 294px;
+    }
+
+    &--1, &--2, &--3 {
+      @include mixins.img;
+  
+      &:hover {
+        @include mixins.img-hover($spread: 0px);
+        box-shadow: none;
+      }
     }
   }
 }
