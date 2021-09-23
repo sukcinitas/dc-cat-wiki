@@ -74,11 +74,9 @@ const config: Configuration = {
   ],
   devtool: "inline-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "build"),
     historyApiFallback: true,
     port: 4000,
     open: true,
-    hot: true,
     proxy: {
       '/api/*': {
         target: 'http://localhost:8080/',
