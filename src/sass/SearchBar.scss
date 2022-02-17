@@ -4,7 +4,9 @@
   position: relative;
   display: inline-block;
 
-  &:focus, &:active, &:hover {
+  &:focus,
+  &:active,
+  &:hover {
     & > .search__panel {
       visibility: visible;
     }
@@ -18,7 +20,9 @@
     color: variables.$brown-1;
     position: relative;
 
-    &:focus, &:active, &:hover {
+    &:focus,
+    &:active,
+    &:hover {
       & ~ .search__panel {
         visibility: visible;
       }
@@ -34,8 +38,10 @@
     color: variables.$brown-1;
     border: 1px solid black;
     padding: 20px 28px;
-  
-    &:focus, &:active, &:hover {
+
+    &:focus,
+    &:active,
+    &:hover {
       outline: none;
     }
   }
@@ -49,13 +55,17 @@
     border: none;
     outline: none;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       cursor: pointer;
       color: variables.$dark-1;
     }
   }
 
-  &__bar--modal, &__icon--modal, &__icon--close, &__btn {
+  &__bar--modal,
+  &__icon--modal,
+  &__icon--close,
+  &__btn {
     display: none;
   }
 
@@ -70,7 +80,9 @@
     padding-right: 12px;
     visibility: hidden;
 
-    &:focus, &:active, &:hover {
+    &:focus,
+    &:active,
+    &:hover {
       visibility: visible;
     }
   }
@@ -81,7 +93,9 @@
     overflow-y: auto;
     margin: 10px;
 
-    &:focus, &:active, &:hover {
+    &:focus,
+    &:active,
+    &:hover {
       visibility: visible;
     }
   }
@@ -89,15 +103,17 @@
   &__item {
     font-family: variables.$font-1;
     font-size: 18px;
-    font-weight: 500;  
+    font-weight: 500;
     display: inline-block;
     width: 100%;
     padding: 17px 11px;
     border-radius: 12px;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: rgba(151, 151, 151, 0.1);
       visibility: visible;
+      cursor: pointer;
     }
   }
 
@@ -106,7 +122,8 @@
   }
 }
 
-.modal, .modal--hidden {
+.modal,
+.modal--hidden {
   display: none;
 }
 
@@ -115,7 +132,6 @@
 }
 
 @media only screen and (max-width: 550px) {
-
   .search {
     &__button {
       display: inherit;
@@ -208,8 +224,8 @@
     &__list {
       overflow-y: scroll;
       margin: 10px 20px;
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
 
       &::-webkit-scrollbar {
         display: none;
@@ -234,15 +250,18 @@
   }
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: variables.$brown-1;
   opacity: 1; /* Firefox */
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: variables.$brown-1;
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
+::-ms-input-placeholder {
+  /* Microsoft Edge */
   color: variables.$brown-1;
 }
