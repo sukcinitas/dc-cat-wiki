@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from "react-dom";
 
-import '../sass/Loader.scss';
+import "../sass/Loader.scss";
 
-const Loader = () => (
+const Loader = () =>
   ReactDOM.createPortal(
     <div className="loader">
       <div className="loader__dots">
@@ -13,8 +13,7 @@ const Loader = () => (
         <span className="material-icons loader__dot loader__dot-4">pets</span>
       </div>
     </div>,
-  document.body
-  )
-);
+    document.body
+  );
 
 export default Loader;

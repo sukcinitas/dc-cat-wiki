@@ -1,4 +1,4 @@
-@use 'variables';
+@use "variables";
 
 .cat-info-card {
   display: flex;
@@ -37,14 +37,14 @@ tr {
   height: 37px;
 }
 
-
 @media only screen and (max-width: 1140px) and (min-width: 1024px) {
   .cat-info-card {
     &__photo-wrapper {
       margin-right: 10px;
     }
 
-    &__photo-wrapper, &__photo {
+    &__photo-wrapper,
+    &__photo {
       margin: 0px;
     }
   }
@@ -59,7 +59,8 @@ tr {
       margin-right: 10px;
     }
 
-    &__photo-wrapper, &__photo {
+    &__photo-wrapper,
+    &__photo {
       width: 240px;
       height: 240px;
     }
@@ -75,7 +76,8 @@ tr {
     flex-direction: column;
     row-gap: 30px;
 
-    &__photo-wrapper, &__photo {
+    &__photo-wrapper,
+    &__photo {
       margin: 0px auto;
       width: 160px;
       height: 160px;

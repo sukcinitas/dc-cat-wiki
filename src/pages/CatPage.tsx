@@ -1,29 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import CatInfoCard from '../components/CatInfoCard';
-import OtherPhotos from '../components/OtherPhotos';
-import Loader from '../components/Loader';
-import ErrorMessage from '../components/ErrorMessage';
-import { mapCatInfo, mapCatImageInfo } from '../util/mapInfo';
-import useFetch from '../util/useFetch';
-import { CatInfo } from '../types';
+import CatInfoCard from "../components/CatInfoCard";
+import OtherPhotos from "../components/OtherPhotos";
+import Loader from "../components/Loader";
+import ErrorMessage from "../components/ErrorMessage";
+import { mapCatInfo, mapCatImageInfo } from "../util/mapInfo";
+import useFetch from "../util/useFetch";
+import { CatInfo } from "../types";
 
 const CatPage = () => {
-  const { breedId } = useParams<{breedId: string}>() || window.location.pathname.split('/')[2];
+  const { breedId } =
+    useParams<{ breedId: string }>() || window.location.pathname.split("/")[2];
   const [imgLoaded, setImgLoaded] = useState(0);
-  const { loading, error, data } = useFetch(`/api/cats/images?breedId=${breedId}&limit=9`);
-  const catInfo: CatInfo = data?.catInfo?.[0] ? mapCatInfo(data?.catInfo?.[0]) 
-  :  
-      {
-        url: '',
-        name: '',
-        description: '',
+  const { loading, error, data } = useFetch(
+    `/api/cats/images?breedId=${breedId}&limit=9`
+  );
+  const catInfo: CatInfo = data?.catInfo?.[0]
+    ? mapCatInfo(data?.catInfo?.[0])
+    : {
+        url: "",
+        name: "",
+        description: "",
         qualities: {
           textQualities: {
-            temperament: '',
-            origin: '',
-            life_span: '',
+            temperament: "",
+            origin: "",
+            life_span: "",
           },
           numberQualities: {
             adaptability: 0,
@@ -37,26 +40,32 @@ const CatPage = () => {
           },
         },
       };
-  const catImageInfo: Array<string> = data?.catInfo ? mapCatImageInfo(data?.catInfo) : [];
+  const catImageInfo: Array<string> = data?.catInfo
+    ? mapCatImageInfo(data?.catInfo)
+    : [];
   const length: number = data?.catInfo?.length ? data.catInfo.length : 0;
 
   const setImgLoadedCount = () => {
     setImgLoaded(imgLoaded + 1);
-  }
+  };
 
   if (error) {
-    return <ErrorMessage>{error}</ErrorMessage>
+    return <ErrorMessage>{error}</ErrorMessage>;
   }
 
-   return (
-     <>
-     {(loading || imgLoaded < length) && <Loader />}
-     <div className={(loading || imgLoaded < length) ? 'cat-page--loading' : 'cat-page'}>
+  return (
+    <>
+      {(loading || imgLoaded < length) && <Loader />}
+      <div
+        className={
+          loading || imgLoaded < length ? "cat-page--loading" : "cat-page"
+        }
+      >
         <CatInfoCard catInfo={catInfo} cb={setImgLoadedCount} />
         <OtherPhotos catImageInfo={catImageInfo} cb={setImgLoadedCount} />
       </div>
-     </>
-   )
-}
+    </>
+  );
+};
 
 export default CatPage;

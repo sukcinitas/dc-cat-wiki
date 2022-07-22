@@ -1,18 +1,18 @@
-@use 'variables';
+@use "variables";
 
 .heading {
   color: variables.$brown-1;
-  font-size: 48px; 
+  font-size: 48px;
   font-family: variables.$font-1;
   font-weight: 700;
   position: relative;
   max-width: 60%;
-  
+
   &--with-line {
     padding: 0px 0px 40px;
     max-width: 100%;
     &::before {
-      content: '';
+      content: "";
       height: 3px;
       width: 68px;
       border-radius: 77px;
@@ -24,13 +24,13 @@
   }
 
   &--small {
-    font-size: 36px; 
+    font-size: 36px;
     font-weight: 600;
     max-width: 100%;
     padding: 0px 0px 40px;
 
     &-bold {
-      font-size: 48px; 
+      font-size: 48px;
       font-weight: 700;
       max-width: 100%;
       padding: 10px 0px 0px;

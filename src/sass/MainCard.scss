@@ -1,5 +1,5 @@
-@use 'variables';
-@use 'mixins';
+@use "variables";
+@use "mixins";
 
 .main-card {
   border-radius: 42px;
@@ -7,7 +7,7 @@
 
   &__top-section {
     padding: 114px 108px 100px;
-    background: url('../assets/HeroImagemd.jpg');
+    background: url("../assets/HeroImagemd.jpg");
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
@@ -40,7 +40,7 @@
     font-family: variables.$font-1;
 
     &::after {
-      content: '';
+      content: "";
       background-color: variables.$brown-3;
       width: 60px;
       height: 3px;
@@ -78,7 +78,7 @@
         left: -6%;
         border-radius: 14px;
         background-color: variables.$yellow-1;
-        top: 10%
+        top: 10%;
       }
     }
 
@@ -90,14 +90,14 @@
       position: relative;
       object-fit: cover;
       @include mixins.img;
-  
+
       &:hover {
         @include mixins.img-hover;
         box-shadow: none;
       }
 
       &-detail {
-        content: '';
+        content: "";
         background-color: variables.$yellow-1;
         width: 46px;
         height: 174px;
@@ -105,7 +105,6 @@
         z-index: -1;
         position: absolute;
       }
-
     }
 
     &-text {
@@ -119,11 +118,10 @@
 }
 
 @media only screen and (min-width: 0px) and (max-width: 550px) {
-
   .main-card {
     &__top-section {
       padding: 20px 30px 20px;
-      background-image: url('../assets/HeroImagesm.jpg');
+      background-image: url("../assets/HeroImagesm.jpg");
     }
 
     &__logo {
@@ -141,7 +139,7 @@
 
     &__additional {
       font-size: 12px;
-  
+
       &::after {
         width: 40px;
       }
@@ -151,7 +149,6 @@
       justify-content: space-around;
 
       &-element:first-child {
-
         & .main-card__cat-row-detail {
           left: -4%;
         }
@@ -173,7 +170,7 @@
 @media only screen and (min-width: 0px) and (max-width: 550px) {
   .main-card {
     &__top-section {
-      background-image: url('../assets/HeroImagesm.jpg');
+      background-image: url("../assets/HeroImagesm.jpg");
       padding: 20px 30px 0;
     }
     &__wrapper {
@@ -185,7 +182,7 @@
 @media only screen and (min-width: 551px) and (max-width: 730px) {
   .main-card {
     &__top-section {
-      background-image: url('../assets/HeroImagemd.jpg');
+      background-image: url("../assets/HeroImagemd.jpg");
       padding: 30px 50px 40px;
     }
 
@@ -198,7 +195,7 @@
 @media only screen and (min-width: 731px) and (max-width: 1440px) {
   .main-card {
     &__top-section {
-      background-image: url('../assets/HeroImagemd.jpg');
+      background-image: url("../assets/HeroImagemd.jpg");
     }
   }
 }
@@ -206,7 +203,7 @@
 @media only screen and (min-width: 1441px) and (max-width: 1800px) {
   .main-card {
     &__top-section {
-      background-image: url('../assets/HeroImagelg.jpg');
+      background-image: url("../assets/HeroImagelg.jpg");
     }
   }
 }

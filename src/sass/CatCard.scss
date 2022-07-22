@@ -1,5 +1,5 @@
-@use 'variables';
-@use 'mixins';
+@use "variables";
+@use "mixins";
 
 .cat-card {
   display: flex;
@@ -14,10 +14,10 @@
     border-radius: 24px;
     object-fit: cover;
     @include mixins.img;
-  
-      &:hover {
-        @include mixins.img-hover($spread: 6px);
-      }
+
+    &:hover {
+      @include mixins.img-hover($spread: 6px);
+    }
   }
 
   &__info {

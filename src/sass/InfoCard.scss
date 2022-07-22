@@ -1,5 +1,5 @@
-@use 'variables';
-@use 'mixins';
+@use "variables";
+@use "mixins";
 
 .info-card {
   margin: 100px 108px;
@@ -7,11 +7,12 @@
   max-height: 490px;
   grid-template-rows: 1fr 4fr;
   grid-template-columns: 7fr 4fr 3fr;
-  grid-template-areas: "info pic1 pic2" 
-                       "info pic3 pic2";  
+  grid-template-areas:
+    "info pic1 pic2"
+    "info pic3 pic2";
   column-gap: 28px;
   row-gap: 28px;
-  
+
   &__info {
     grid-area: info;
     align-self: center;
@@ -22,21 +23,18 @@
     width: 100%;
     grid-area: pic1;
     float: right;
-
   }
 
   &__pic-wrapper:nth-child(3) {
     height: 100%;
     width: 100%;
     grid-area: pic2;
-
   }
 
   &__pic-wrapper:nth-child(4) {
     height: 100%;
     width: 100%;
-    grid-area: pic3; 
-
+    grid-area: pic3;
   }
 
   &__pic {
@@ -46,8 +44,8 @@
     }
 
     &--2 {
-      float:  left;
-      max-height: 385px
+      float: left;
+      max-height: 385px;
     }
 
     &--3 {
@@ -55,9 +53,11 @@
       max-height: 294px;
     }
 
-    &--1, &--2, &--3 {
+    &--1,
+    &--2,
+    &--3 {
       @include mixins.img;
-  
+
       &:hover {
         @include mixins.img-hover($spread: 0px);
         box-shadow: none;
@@ -72,9 +72,10 @@
     display: grid;
     grid-template-rows: 3fr 1fr 2fr;
     grid-template-columns: 2fr 2fr;
-    grid-template-areas: "info info" 
-                         "pic1 pic2" 
-                         "pic3 pic2";  
+    grid-template-areas:
+      "info info"
+      "pic1 pic2"
+      "pic3 pic2";
     column-gap: 28px;
     row-gap: 28px;
 
@@ -83,7 +84,6 @@
     }
     max-height: 900px;
   }
-
 }
 
 @media only screen and (max-width: 800px) and (min-width: 621px) {
@@ -92,9 +92,10 @@
     display: grid;
     grid-template-rows: 3fr 1fr 2fr;
     grid-template-columns: 2fr 2fr;
-    grid-template-areas: "info info" 
-                         "pic1 pic2" 
-                         "pic3 pic2";  
+    grid-template-areas:
+      "info info"
+      "pic1 pic2"
+      "pic3 pic2";
     column-gap: 28px;
     row-gap: 28px;
 
@@ -103,18 +104,18 @@
     }
     max-height: 900px;
   }
-
 }
 
-@media only screen and (max-width: 620px)  and (min-width: 381px) {
+@media only screen and (max-width: 620px) and (min-width: 381px) {
   .info-card {
     margin: 60px 0px 20px;
     display: grid;
     grid-template-rows: 4fr 1fr 2fr;
     grid-template-columns: 2fr 2fr;
-    grid-template-areas: "info info" 
-                         "pic1 pic2" 
-                         "pic3 pic2";  
+    grid-template-areas:
+      "info info"
+      "pic1 pic2"
+      "pic3 pic2";
     column-gap: 10px;
     row-gap: 10px;
     max-height: none;
@@ -127,17 +128,16 @@
       &--1 {
         max-height: 105px;
       }
-  
+
       &--2 {
-        max-height: 242px
+        max-height: 242px;
       }
-  
+
       &--3 {
         max-height: 184px;
       }
     }
   }
-
 }
 
 @media only screen and (max-width: 380px) {
@@ -146,9 +146,10 @@
     display: grid;
     grid-template-rows: 4fr 1fr 2fr;
     grid-template-columns: 6fr 5fr;
-    grid-template-areas: "info info" 
-                         "pic1 pic2" 
-                         "pic3 pic2";  
+    grid-template-areas:
+      "info info"
+      "pic1 pic2"
+      "pic3 pic2";
     column-gap: 10px;
     row-gap: 10px;
     max-height: none;
@@ -161,15 +162,14 @@
       &--1 {
         max-height: 100px;
       }
-  
+
       &--2 {
-        max-height: 212px
+        max-height: 212px;
       }
-  
+
       &--3 {
         max-height: 170px;
       }
     }
   }
-
 }

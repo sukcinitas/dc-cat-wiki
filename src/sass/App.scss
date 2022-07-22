@@ -1,6 +1,8 @@
-@use 'variables';
+@use "variables";
 
-body, html, * {
+body,
+html,
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -57,9 +59,9 @@ body {
   flex-direction: column;
   row-gap: 55px;
 
-    &--loading {
-      height: 0vh;
-      overflow: hidden;
+  &--loading {
+    height: 0vh;
+    overflow: hidden;
   }
 }
 
@@ -70,17 +72,17 @@ body {
 ::-webkit-scrollbar-track {
   margin: 20px;
   border-radius: 24px;
-  background: variables.$bright-7; 
+  background: variables.$bright-7;
 }
- 
+
 ::-webkit-scrollbar-thumb {
   border-radius: 24px;
   height: 68px;
-  background: variables.$bright-6; 
+  background: variables.$bright-6;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FCD12A; 
+  background: #fcd12a;
 }
 
 @media only screen and (min-width: 1440px) {
@@ -101,5 +103,3 @@ body {
     width: 90%;
   }
 }
-
-

@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
-import '../sass/SearchBar.scss';
+import "../sass/SearchBar.scss";
 
 const SearchBar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedBreedId, setSelectedBreedId] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedBreedId, setSelectedBreedId] = useState("");
   const [list, setList] = useState([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const history = useHistory();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchQuery(e.currentTarget.value);
-    setError('');
+    setError("");
   };
 
   useEffect(() => {
@@ -25,7 +25,10 @@ const SearchBar = () => {
             data: { success, searchList, message },
           } = res;
           if (success) {
-            if (searchList.length === 1 && searchList[0].name.toLowerCase() === searchQuery.toLowerCase()) {
+            if (
+              searchList.length === 1 &&
+              searchList[0].name.toLowerCase() === searchQuery.toLowerCase()
+            ) {
               setSelectedBreedId(searchList[0].id);
               setList([]);
             } else {
@@ -36,16 +39,23 @@ const SearchBar = () => {
           }
         },
         (err) => {
-          setError(err.response.data.message || `${err.response.status}: ${err.response.statusText}`);
-          setSearchQuery('');
+          setError(
+            err.response.data.message ||
+              `${err.response.status}: ${err.response.statusText}`
+          );
+          setSearchQuery("");
         }
       );
     };
     searchBreed(searchQuery);
   }, [searchQuery]);
 
-  const selectBreed = (breedName: string, breedId: string, e?: React.KeyboardEvent): void => {
-    if (e && e.key !== '13') {
+  const selectBreed = (
+    breedName: string,
+    breedId: string,
+    e?: React.KeyboardEvent
+  ): void => {
+    if (e && e.key !== "13") {
       return;
     }
     setSearchQuery(breedName);
@@ -63,7 +73,7 @@ const SearchBar = () => {
 
   const closeModal = () => {
     setIsModalVisible(false);
-    setSearchQuery('');
+    setSearchQuery("");
     setList([]);
   };
 
@@ -85,7 +95,7 @@ const SearchBar = () => {
     <div className="search">
       <form className="search__bar" onSubmit={handleSubmit}>
         <input
-          placeholder={error ? error : 'Enter your breed'}
+          placeholder={error ? error : "Enter your breed"}
           className="search__bar-input"
           onChange={handleChange}
           value={searchQuery}
@@ -96,18 +106,25 @@ const SearchBar = () => {
           <span className="material-icons">search</span>
         </button>
       </form>
-      <button className="search__button" onClick={() => setIsModalVisible(true)}>
+      <button
+        className="search__button"
+        onClick={() => setIsModalVisible(true)}
+      >
         Search
         <span className="material-icons search__button-icon">search</span>
       </button>
-      <div className="search__panel">{list.length > 0 && <ul className="search__list">{nameList}</ul>}</div>
-      <div className={isModalVisible ? 'modal' : 'modal--hidden'}>
+      <div className="search__panel">
+        {list.length > 0 && <ul className="search__list">{nameList}</ul>}
+      </div>
+      <div className={isModalVisible ? "modal" : "modal--hidden"}>
         <button onClick={closeModal} className="modal__btn">
-          <span className="material-icons search__icon--close modal__icon--close">close</span>
+          <span className="material-icons search__icon--close modal__icon--close">
+            close
+          </span>
         </button>
         <form className="modal__bar search__bar" onSubmit={handleSubmit}>
           <input
-            placeholder={error ? error : 'Enter your breed'}
+            placeholder={error ? error : "Enter your breed"}
             className="modal__bar-input search__bar-input"
             onChange={handleChange}
             value={searchQuery}
@@ -119,7 +136,9 @@ const SearchBar = () => {
           </button>
         </form>
         <div className="modal__panel search__panel">
-          {list.length > 0 && <ul className="modal__list search__list">{nameList}</ul>}
+          {list.length > 0 && (
+            <ul className="modal__list search__list">{nameList}</ul>
+          )}
         </div>
       </div>
     </div>

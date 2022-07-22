@@ -1,4 +1,4 @@
-@use 'variables';
+@use "variables";
 
 .footer {
   flex-basis: 110px;
@@ -49,7 +49,6 @@
 }
 
 @media only screen and (max-width: 970px) and (min-width: 550px) {
-
   .footer {
     flex-direction: column;
     left: 30px;
@@ -76,7 +75,6 @@
 }
 
 @media only screen and (max-width: 550px) {
-
   .footer {
     flex-direction: column;
     left: 18px;

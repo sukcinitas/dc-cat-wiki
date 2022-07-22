@@ -1,15 +1,15 @@
-@use 'variables';
+@use "variables";
 
-@mixin img ($time: 0.10s, $scale: scale(1)) {
-    transform: $scale;
-    transition: transform, box-shadow;
-    transition-duration: $time; 
+@mixin img($time: 0.1s, $scale: scale(1)) {
+  transform: $scale;
+  transition: transform, box-shadow;
+  transition-duration: $time;
 }
 
-@mixin img-hover ($spread: 10px, $time: 0.15s, $scale: scale(1.1)) {
-    cursor: pointer;
-    transform: $scale;
-    transition: transform, box-shadow;
-    transition-duration: $time;
-    box-shadow: 2px $spread $spread variables.$bright-7; 
+@mixin img-hover($spread: 10px, $time: 0.15s, $scale: scale(1.1)) {
+  cursor: pointer;
+  transform: $scale;
+  transition: transform, box-shadow;
+  transition-duration: $time;
+  box-shadow: 2px $spread $spread variables.$bright-7;
 }
