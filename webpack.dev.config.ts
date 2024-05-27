@@ -76,12 +76,10 @@ const config: Configuration = {
     historyApiFallback: true,
     port: 4000,
     open: true,
-    proxy: {
-      '/api/*': {
-        target: 'http://localhost:8080/',
-        secure: false,
-      },
-    },
+    proxy: [{
+      context: ['/api'],
+      target: 'http://localhost:8080/', 
+    }],
   },
 };
 
