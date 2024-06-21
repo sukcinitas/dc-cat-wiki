@@ -6,14 +6,13 @@ import imageSmall from "../assets/CatwikiLogoSmall.svg";
 import SearchBar from "./SearchBar";
 import Heading from "./Heading";
 import Button from "./Button";
+import Image from "./Image";
 import "../sass/MainCard.scss";
 
 const MainCard = ({
   data,
-  cb,
 }: {
   data: Array<{ id: string; name: string; url: string }>;
-  cb: () => void;
 }) => {
   const history = useHistory();
 
@@ -21,12 +20,9 @@ const MainCard = ({
     <div key={cat.id} className="main-card__cat-row-element">
       <div className="main-card__cat-row-wrapper">
         <span className="main-card__cat-row-detail"></span>
-        <img
-          onLoad={cb}
-          onClick={() => history.push(`/breeds/${cat.id}`)}
-          src={cat.url}
-          className="main-card__cat-row-image"
-        ></img>
+        <Button cb={() => history.push(`/breeds/${cat.id}`)} classes={["relative"]}>
+          <Image src={cat.url} classes={["main-card__cat-row-image"]} />
+        </Button>
       </div>
       <p className="main-card__cat-row-text">{cat.name}</p>
     </div>
@@ -35,16 +31,10 @@ const MainCard = ({
   return (
     <div className="main-card">
       <section className="main-card__top-section">
-        {/* <img onLoad={cb} src={image} className="main-card__logo" /> */}
         <picture>
           <source media="(min-width:550px)" srcSet={image} />
           <source media="(min-width:0px)" srcSet={imageSmall} />
-          <img
-            onLoad={cb}
-            src={image}
-            className="main-card__logo"
-            alt="A cat"
-          />
+          <Image src={image} classes={["main-card__logo"]} noLoader />
         </picture>
         <p className="main-card__text">Get to know more about your cat breed</p>
         <SearchBar />
@@ -53,7 +43,7 @@ const MainCard = ({
         <p className="main-card__additional">Most Searched Breeds</p>
         <div className="main-card__wrapper">
           <Heading>66+ Breeds for you to discover</Heading>
-          <Button cb={() => history.push("/most-popular-breeds")}>
+          <Button cb={() => history.push("/most-popular-breeds")} withIcon>
             See more
           </Button>
         </div>

@@ -3,12 +3,14 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import "../sass/SearchBar.scss";
+import Button from "./Button";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBreedId, setSelectedBreedId] = useState("");
   const [list, setList] = useState([]);
   const [error, setError] = useState("");
+  const [isListOpen, setIsListOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const history = useHistory();
 
@@ -95,45 +97,48 @@ const SearchBar = () => {
     <div className="search">
       <form className="search__bar" onSubmit={handleSubmit}>
         <input
-          placeholder={error ? error : "Enter your breed"}
+          placeholder={error || "Enter your breed"}
           className="search__bar-input"
           onChange={handleChange}
           value={searchQuery}
           type="text"
-          onClick={() => setIsModalVisible(true)}
+          onClick={() => setIsListOpen((isListOpen) => !isListOpen)}
         />
-        <button type="submit" className="search__icon">
+        <Button type="submit" classes={["search__icon"]}>
           <span className="material-icons">search</span>
-        </button>
+        </Button>
       </form>
-      <button
-        className="search__button"
-        onClick={() => setIsModalVisible(true)}
-      >
-        Search
+
+      <Button classes={["search__button"]} cb={() => setIsModalVisible(true)}>
+        Search{" "}
         <span className="material-icons search__button-icon">search</span>
-      </button>
-      <div className="search__panel">
+      </Button>
+      <div
+        className={`search__panel ${
+          isModalVisible || isListOpen ? "search__panel--visible" : ""
+        }`}
+      >
         {list.length > 0 && <ul className="search__list">{nameList}</ul>}
       </div>
-      <div className={isModalVisible ? "modal" : "modal--hidden"}>
-        <button onClick={closeModal} className="modal__btn">
+      <div className={isModalVisible || isListOpen ? "modal" : "modal--hidden"}>
+        <Button cb={closeModal} classes={["modal__btn"]}>
           <span className="material-icons search__icon--close modal__icon--close">
             close
           </span>
-        </button>
+        </Button>
+
         <form className="modal__bar search__bar" onSubmit={handleSubmit}>
           <input
-            placeholder={error ? error : "Enter your breed"}
+            placeholder={error || "Enter your breed"}
             className="modal__bar-input search__bar-input"
             onChange={handleChange}
             value={searchQuery}
             onFocus={handleChange}
             type="text"
           />
-          <button type="submit" className="modal__icon search__icon">
+          <Button type="submit" classes={["modal__icon search__icon"]}>
             <span className="material-icons">search</span>
-          </button>
+          </Button>
         </form>
         <div className="modal__panel search__panel">
           {list.length > 0 && (

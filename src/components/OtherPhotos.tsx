@@ -1,22 +1,14 @@
 import React from "react";
 
 import Heading from "./Heading";
+import Image from "./Image";
 import "../sass/OtherPhotos.scss";
 
-const OtherPhotos = ({
-  catImageInfo,
-  cb,
-}: {
-  catImageInfo: Array<string>;
-  cb: () => void;
-}) => {
+const OtherPhotos = ({ catImageInfo }: { catImageInfo: Array<string> }) => {
   const imageList = catImageInfo.map((imageInfo) => (
-    <img
-      onLoad={cb}
-      key={imageInfo}
-      src={imageInfo}
-      className="photos__photo"
-    ></img>
+    <div key={imageInfo} className="relative">
+      <Image src={imageInfo} classes={["photos__photo"]} />
+    </div>
   ));
   return (
     <section className="photos">

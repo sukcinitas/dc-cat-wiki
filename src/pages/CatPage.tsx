@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 
 import CatInfoCard from "../components/CatInfoCard";
@@ -12,7 +12,6 @@ import { CatInfo } from "../types";
 const CatPage = () => {
   const { breedId } =
     useParams<{ breedId: string }>() || window.location.pathname.split("/")[2];
-  const [imgLoaded, setImgLoaded] = useState(0);
   const { loading, error, data } = useFetch(
     `/api/cats/images?breedId=${breedId}&limit=9`
   );
@@ -43,11 +42,6 @@ const CatPage = () => {
   const catImageInfo: Array<string> = data?.catInfo
     ? mapCatImageInfo(data?.catInfo)
     : [];
-  const length: number = data?.catInfo?.length ? data.catInfo.length : 0;
-
-  const setImgLoadedCount = () => {
-    setImgLoaded(imgLoaded + 1);
-  };
 
   if (error) {
     return <ErrorMessage>{error}</ErrorMessage>;
@@ -55,14 +49,10 @@ const CatPage = () => {
 
   return (
     <>
-      {(loading || imgLoaded < length) && <Loader />}
-      <div
-        className={
-          loading || imgLoaded < length ? "cat-page--loading" : "cat-page"
-        }
-      >
-        <CatInfoCard catInfo={catInfo} cb={setImgLoadedCount} />
-        <OtherPhotos catImageInfo={catImageInfo} cb={setImgLoadedCount} />
+      {loading && <Loader />}
+      <div className={loading ? "cat-page--loading" : "cat-page"}>
+        <CatInfoCard catInfo={catInfo} />
+        <OtherPhotos catImageInfo={catImageInfo} />
       </div>
     </>
   );

@@ -4,14 +4,6 @@
   position: relative;
   display: inline-block;
 
-  &:focus,
-  &:active,
-  &:hover {
-    & > .search__panel {
-      visibility: visible;
-    }
-  }
-
   &__bar {
     margin: 50px 0px;
     font-family: variables.$font-1;
@@ -19,14 +11,6 @@
     border-radius: 59px;
     color: variables.$brown-1;
     position: relative;
-
-    &:focus,
-    &:active,
-    &:hover {
-      & ~ .search__panel {
-        visibility: visible;
-      }
-    }
   }
 
   &__bar-input {
@@ -80,9 +64,7 @@
     padding-right: 12px;
     visibility: hidden;
 
-    &:focus,
-    &:active,
-    &:hover {
+    &--visible {
       visibility: visible;
     }
   }
@@ -92,12 +74,6 @@
     display: block;
     overflow-y: auto;
     margin: 10px;
-
-    &:focus,
-    &:active,
-    &:hover {
-      visibility: visible;
-    }
   }
 
   &__item {
@@ -191,13 +167,11 @@
     height: 100vh;
     background-color: white;
     z-index: 10;
-    display: flex;
     flex-direction: column;
 
     &__bar {
       width: auto;
       height: 100%;
-      margin: 50px 20px;
       z-index: 13;
       margin: 0px 20px;
       display: inherit;

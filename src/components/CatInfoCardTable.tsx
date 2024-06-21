@@ -41,8 +41,8 @@ const change = (name: string): string => {
 
 const CatInfoCardTable = ({ qualities }: TCatInfoCardTableProps) => {
   const { textQualities, numberQualities } = qualities;
-  const textValues = Object.entries(textQualities).map((entry, index) => (
-    <tr key={index}>
+  const textValues = Object.entries(textQualities).map((entry) => (
+    <tr key={entry[0]}>
       <td className="cat-info-card__info-table-property" colSpan={2}>
         {`${change(entry[0])}: `}
         <span className="cat-info-card__info-table-value">
@@ -52,8 +52,8 @@ const CatInfoCardTable = ({ qualities }: TCatInfoCardTableProps) => {
     </tr>
   ));
 
-  const numberValues = Object.entries(numberQualities).map((entry, index) => (
-    <tr key={index}>
+  const numberValues = Object.entries(numberQualities).map((entry) => (
+    <tr key={entry[0]}>
       <td className="cat-info-card__info-table-property">{`${change(
         entry[0]
       )}: `}</td>

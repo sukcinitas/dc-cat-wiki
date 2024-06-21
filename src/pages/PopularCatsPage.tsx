@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Heading from "../components/Heading";
 import CatCard from "../components/CatCard";
@@ -8,16 +8,11 @@ import { CatBreedSearchedData } from "../types";
 import useFetch from "../util/useFetch";
 
 const PopularCatsPage = () => {
-  const [imgLoaded, setImgLoaded] = useState(0);
   const {
     loading,
     error,
     data = { mostPopularBreeds: [] },
   } = useFetch("/api/cats/");
-
-  const setImgLoadedCount = () => {
-    setImgLoaded(imgLoaded + 1);
-  };
 
   const sorted = data?.mostPopularBreeds?.sort(
     (a: CatBreedSearchedData, b: CatBreedSearchedData) =>
@@ -32,7 +27,6 @@ const PopularCatsPage = () => {
       name={cat.name}
       description={cat.description}
       url={cat.image.url}
-      cb={setImgLoadedCount}
     />
   ));
 
@@ -42,13 +36,9 @@ const PopularCatsPage = () => {
 
   return (
     <>
-      {(loading || imgLoaded < 10) && <Loader />}
+      {loading && <Loader />}
       <div
-        className={
-          loading || imgLoaded < 10
-            ? "popular-cats-page--loading"
-            : "popular-cats-page"
-        }
+        className={loading ? "popular-cats-page--loading" : "popular-cats-page"}
       >
         <Heading type="small-bold">Top 10 most searched breeds</Heading>
         {list}

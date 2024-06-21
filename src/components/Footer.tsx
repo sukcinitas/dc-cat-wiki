@@ -1,15 +1,17 @@
 import React from "react";
 
+import Image from "./Image";
 import image from "../assets/CatwikiLogoWhite.svg";
 import "../sass/Footer.scss";
 
 const Footer = () => (
   <footer className="footer">
-    <img
-      className="footer__logo"
+    <Image
+      classes={["footer__logo"]}
       src={image}
       alt="Title CatWiki and a cat beside"
-    ></img>
+      noLoader
+    />
     <p className="footer__content">
       <span className="footer__icon">&#169;</span> created by{" "}
       <a

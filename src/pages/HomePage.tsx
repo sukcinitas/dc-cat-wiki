@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import useFetch from "../util/useFetch";
 import MainCard from "../components/MainCard";
@@ -9,12 +9,7 @@ import { mapCatImageNameInfo } from "../util/mapInfo";
 import { CatBreedSearchedData } from "../types";
 
 const HomePage = () => {
-  const [imgLoaded, setImgLoaded] = useState(0);
   const { loading, error, data } = useFetch("/api/cats/");
-
-  const setImgLoadedCount = () => {
-    setImgLoaded(imgLoaded + 1);
-  };
 
   const sorted = data?.mostPopularBreeds
     ? data?.mostPopularBreeds?.sort(
@@ -30,14 +25,10 @@ const HomePage = () => {
 
   return (
     <>
-      {(loading || imgLoaded < 8) && <Loader />}
-      <div
-        className={
-          loading || imgLoaded < 8 ? "home-page--loading" : "home-page"
-        }
-      >
-        <MainCard data={mapped} cb={setImgLoadedCount} />
-        <InfoCard cb={setImgLoadedCount} />
+      {loading && <Loader />}
+      <div className={loading ? "home-page--loading" : "home-page"}>
+        <MainCard data={mapped} />
+        <InfoCard />
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import React from "react";
 
 import Heading from "./Heading";
 import Paragraph from "./Paragraph";
+import Image from "./Image";
 import CatInfoCardTable from "./CatInfoCardTable";
 
 import "../sass/CatInfoCard.scss";
@@ -29,17 +30,17 @@ type TCatInfoCardProps = {
       };
     };
   };
-  cb: () => void;
 };
 
 const CatInfoCard = ({
   catInfo: { name, description, url, qualities },
-  cb,
 }: TCatInfoCardProps) => {
   return (
     <section className="cat-info-card">
       <div className="cat-info-card__photo-wrapper">
-        <img onLoad={cb} src={url} className="cat-info-card__photo"></img>
+        <div className="relative">
+          <Image src={url} classes={["cat-info-card__photo"]} />
+        </div>
         <span className="cat-info-card__detail"></span>
       </div>
       <div className="cat-info-card__table">
