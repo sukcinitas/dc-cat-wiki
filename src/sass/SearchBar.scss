@@ -123,6 +123,8 @@
       font-weight: 500;
       position: relative;
       padding-right: 20px;
+      background-color: variables.$bright-1;
+      text-transform: unset;
 
       &:hover {
         cursor: pointer;
@@ -138,7 +140,7 @@
 
     &__button-icon {
       position: absolute;
-      right: 6px;
+      right: 12px;
       top: 9px;
       font-size: 14px;
     }

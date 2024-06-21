@@ -95,6 +95,7 @@ const SearchBar = () => {
 
   return (
     <div className="search">
+      {/* Mobile view */}
       <form className="search__bar" onSubmit={handleSubmit}>
         <input
           placeholder={error || "Enter your breed"}
@@ -110,7 +111,7 @@ const SearchBar = () => {
       </form>
 
       <Button classes={["search__button"]} cb={() => setIsModalVisible(true)}>
-        Search{" "}
+        <span>Search</span>
         <span className="material-icons search__button-icon">search</span>
       </Button>
       <div
