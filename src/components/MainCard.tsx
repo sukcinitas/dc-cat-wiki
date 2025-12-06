@@ -20,7 +20,10 @@ const MainCard = ({
     <div key={cat.id} className="main-card__cat-row-element">
       <div className="main-card__cat-row-wrapper">
         <span className="main-card__cat-row-detail"></span>
-        <Button cb={() => history.push(`/breeds/${cat.id}`)} classes={["relative"]}>
+        <Button
+          cb={() => history.push(`/breeds/${cat.id}`)}
+          classes={["relative"]}
+        >
           <Image src={cat.url} classes={["main-card__cat-row-image"]} />
         </Button>
       </div>

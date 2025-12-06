@@ -22,7 +22,7 @@ const useFetch = (url = "") => {
       .get(url)
       .then((response) => {
         if (isMounted) {
-          setData(response.data);
+          setData(response?.data);
           setError("");
         }
       })

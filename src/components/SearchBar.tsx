@@ -42,8 +42,9 @@ const SearchBar = () => {
         },
         (err) => {
           setError(
-            err.response.data.message ||
-              `${err.response.status}: ${err.response.statusText}`
+            err?.message ||
+              err.response?.data?.message ||
+              `${err.response?.status}: ${err?.response?.statusText}`
           );
           setSearchQuery("");
         }
