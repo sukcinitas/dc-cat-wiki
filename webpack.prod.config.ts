@@ -36,23 +36,13 @@ const config: webpack.Configuration = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 10000,
-            },
+        test: /\.(png|jpg|jpeg|gif|svg|ttf)$/i,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024, // 10kb inline limit
           },
-        ],
-      },
-      {
-        test: /\.(png|jpg|gif|jpeg|ttf)$/,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
+        },
       },
     ],
   },
