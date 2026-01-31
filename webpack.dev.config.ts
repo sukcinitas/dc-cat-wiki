@@ -36,23 +36,13 @@ const config: Configuration = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 10000,
-            },
+        test: /\.(png|jpg|jpeg|gif|svg|ttf)$/i,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024, // 10kb inline limit
           },
-        ],
-      },
-      {
-        test: /\.(png|jpg|gif|jpeg|ttf)$/,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
+        },
       },
     ],
   },
@@ -74,7 +64,7 @@ const config: Configuration = {
       __PRODUCTION__: JSON.stringify(false),
     }),
   ],
-  devtool: "inline-source-map",
+  devtool: "cheap-module-source-map",
   devServer: {
     historyApiFallback: true,
     port: 4000,
