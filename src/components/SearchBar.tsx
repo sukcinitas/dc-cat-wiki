@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "../sass/SearchBar.scss";
@@ -12,7 +12,7 @@ const SearchBar = () => {
   const [error, setError] = useState("");
   const [isListOpen, setIsListOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchQuery(e.currentTarget.value);
@@ -44,10 +44,10 @@ const SearchBar = () => {
           setError(
             err?.message ||
               err.response?.data?.message ||
-              `${err.response?.status}: ${err?.response?.statusText}`
+              `${err.response?.status}: ${err?.response?.statusText}`,
           );
           setSearchQuery("");
-        }
+        },
       );
     };
     searchBreed(searchQuery);
@@ -56,14 +56,14 @@ const SearchBar = () => {
   const selectBreed = (
     breedName: string,
     breedId: string,
-    e?: React.KeyboardEvent
+    e?: React.KeyboardEvent,
   ): void => {
     if (e && e.key !== "13") {
       return;
     }
     setSearchQuery(breedName);
     setSelectedBreedId(breedId);
-    history.push(`/breeds/${breedId}`);
+    navigate(`/breeds/${breedId}`);
   };
 
   const handleSubmit = (e: React.FormEvent): void => {
@@ -71,7 +71,7 @@ const SearchBar = () => {
     if (!selectedBreedId) {
       return;
     }
-    history.push(`/breeds/${selectedBreedId}`);
+    navigate(`/breeds/${selectedBreedId}`);
   };
 
   const closeModal = () => {
@@ -91,7 +91,7 @@ const SearchBar = () => {
       >
         {cat.name}
       </li>
-    )
+    ),
   );
 
   return (
