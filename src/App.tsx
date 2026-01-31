@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,13 +13,13 @@ const App = () => {
   return (
     <div className="main">
       <Router>
-        <Route component={Header} />
-        <Switch>
-          <Route path="/most-popular-breeds" component={PopularCatsPage} />
-          <Route path="/breeds/:breedId" component={CatPage} />
-          <Route path="/about" component={ReadMorePage} />
-          <Route exact path="/" component={HomePage} />
-        </Switch>
+        <Header />
+        <Routes>
+          <Route path="/most-popular-breeds" element={<PopularCatsPage />} />
+          <Route path="/breeds/:breedId" element={<CatPage />} />
+          <Route path="/about" element={<ReadMorePage />} />
+          <Route path="/" element={<HomePage />} />
+        </Routes>
         <Footer />
       </Router>
     </div>

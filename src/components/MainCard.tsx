@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import image from "../assets/CatwikiLogoWhite.svg";
 import imageSmall from "../assets/CatwikiLogoSmall.svg";
@@ -14,16 +14,13 @@ const MainCard = ({
 }: {
   data: Array<{ id: string; name: string; url: string }>;
 }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const list = data.map((cat: { id: string; name: string; url: string }) => (
     <div key={cat.id} className="main-card__cat-row-element">
       <div className="main-card__cat-row-wrapper">
         <span className="main-card__cat-row-detail"></span>
-        <Button
-          cb={() => history.push(`/breeds/${cat.id}`)}
-          classes={["relative"]}
-        >
+        <Button cb={() => navigate(`/breeds/${cat.id}`)} classes={["relative"]}>
           <Image src={cat.url} classes={["main-card__cat-row-image"]} />
         </Button>
       </div>
@@ -46,7 +43,7 @@ const MainCard = ({
         <p className="main-card__additional">Most Searched Breeds</p>
         <div className="main-card__wrapper">
           <Heading>66+ Breeds for you to discover</Heading>
-          <Button cb={() => history.push("/most-popular-breeds")} withIcon>
+          <Button cb={() => navigate("/most-popular-breeds")} withIcon>
             See more
           </Button>
         </div>

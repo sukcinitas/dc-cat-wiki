@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../sass/InfoCard.scss";
 
@@ -12,7 +12,7 @@ import Button from "./Button";
 import Image from "./Image";
 
 const InfoCard = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <div className="info-card">
       <section className="info-card__info">
@@ -21,7 +21,7 @@ const InfoCard = () => {
           Having a cat around you can actually trigger the release of calming
           chemicals in your body which lower your stress and anxiety levels
         </Paragraph>
-        <Button cb={() => history.push("/about")} withIcon>
+        <Button cb={() => navigate("/about")} withIcon>
           Read more
         </Button>
       </section>
